@@ -8,13 +8,13 @@ import org.json.simple.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.LogDetailsRetrieverService;
+import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.LogDetailsRetrieverBean;
 
 @RunWith(Arquillian.class)
 public class LogDetailsRetrieverTest {
 
 	@EJB
-	private LogDetailsRetrieverService logger;
+	private LogDetailsRetrieverBean logger;
 
 	@Test
 	public void testLogger() {

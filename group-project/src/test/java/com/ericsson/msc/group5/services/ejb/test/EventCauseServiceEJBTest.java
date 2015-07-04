@@ -8,15 +8,15 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.EventCauseService;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCauseData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
 
 @RunWith(Arquillian.class)
 public class EventCauseServiceEJBTest {
 
 	@EJB
-	private EventCauseService service;
+	private EventCauseData service;
 
 	@Test
 	public void addEventCause() {

@@ -10,17 +10,17 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.CountryCodeNetworkCodeService;
-import com.ericsson.msc.failuremanagement.failureslog.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.CountryCodeNetworkCodeData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
 
 @RunWith(Arquillian.class)
 @Transactional
 public class CountryCodeNetworkCodeServiceEJBTest {
 
 	@EJB
-	private CountryCodeNetworkCodeService service;
+	private CountryCodeNetworkCodeData service;
 
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)

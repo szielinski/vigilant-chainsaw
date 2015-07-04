@@ -18,13 +18,13 @@ import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.accesscontrol.business.UserService;
+import com.ericsson.msc.failuremanagement.authorization.business.UserData;
 
 @RunWith(Arquillian.class)
 public class AdminAccountCreatorEJBTest {
 	
 	@EJB
-	private UserService service;
+	private UserData service;
 	
 	@Test
 	public void initTest() {

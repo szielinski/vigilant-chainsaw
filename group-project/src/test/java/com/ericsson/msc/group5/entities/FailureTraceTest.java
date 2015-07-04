@@ -14,20 +14,20 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.CountryCodeNetworkCodeService;
-import com.ericsson.msc.failuremanagement.failureslog.business.EventCauseService;
-import com.ericsson.msc.failuremanagement.failureslog.business.FailureClassService;
-import com.ericsson.msc.failuremanagement.failureslog.business.FailureTraceService;
-import com.ericsson.msc.failuremanagement.failureslog.business.UserEquipmentService;
-import com.ericsson.msc.failuremanagement.failureslog.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCodeCK;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureTrace;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureTraceDAO;
-import com.ericsson.msc.failuremanagement.failureslog.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.CountryCodeNetworkCodeData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCauseData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureClassData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.UserEquipmentData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -40,19 +40,19 @@ public class FailureTraceTest {
 	private UserTransaction utx;
 
 	@Inject
-	private FailureTraceService failureTraceService;
+	private FailureTraceData failureTraceService;
 	@Inject
 	private FailureTraceDAO failureTraceDAO;
 	@Inject
-	private UserEquipmentService userEquipmentService;
+	private UserEquipmentData userEquipmentService;
 	@Inject
-	private FailureClassService failureClassService;
+	private FailureClassData failureClassService;
 	@Inject
-	private EventCauseService eventCauseService;
+	private EventCauseData eventCauseService;
 	// @Inject
 	// private CountryService countryService;
 	@Inject
-	private CountryCodeNetworkCodeService countryCodeNetworkCodeService;
+	private CountryCodeNetworkCodeData countryCodeNetworkCodeService;
 
 	private final static Integer INITIAL_DURATION = 1000;
 	private final static Integer UPDATED_DURATION = 10000;

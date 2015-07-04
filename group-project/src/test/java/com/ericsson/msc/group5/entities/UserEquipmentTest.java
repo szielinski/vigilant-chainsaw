@@ -20,7 +20,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
 
 @RunWith(Arquillian.class)
 public class UserEquipmentTest {

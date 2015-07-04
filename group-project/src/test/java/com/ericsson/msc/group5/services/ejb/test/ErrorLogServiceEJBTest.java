@@ -18,15 +18,15 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.validation.business.ErrorLogWriterService;
-import com.ericsson.msc.failuremanagement.validation.data.ErrorLog;
-import com.ericsson.msc.failuremanagement.validation.data.ErrorLogDAO;
+import com.ericsson.msc.failuremanagement.failureslog.validation.business.ErrorLogWriter;
+import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
+import com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.ErrorLogDAO;
 
 @RunWith(Arquillian.class)
 public class ErrorLogServiceEJBTest {
 
 	@EJB
-	private ErrorLogWriterService service;
+	private ErrorLogWriter service;
 	@Inject
 	private ErrorLogDAO errorLogDAO;
 

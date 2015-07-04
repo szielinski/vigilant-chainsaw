@@ -8,14 +8,14 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.FailureTraceService;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
 
 @RunWith(Arquillian.class)
 public class FailureTraceServiceEJBTest {
 
 	@EJB
-	private FailureTraceService service;
+	private FailureTraceData service;
 
 	@Test
 	public void addFailureTracesTest() {

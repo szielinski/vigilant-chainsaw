@@ -6,14 +6,14 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.accesscontrol.business.UserService;
-import com.ericsson.msc.failuremanagement.accesscontrol.data.User;
+import com.ericsson.msc.failuremanagement.authorization.business.UserData;
+import com.ericsson.msc.failuremanagement.authorization.data.User;
 
 @RunWith(Arquillian.class)
 public class UserServiceEJBTests {
 
 	@EJB
-	private UserService service;
+	private UserData service;
 
 	@Test
 	public void testUserIsAdded() {

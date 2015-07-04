@@ -10,13 +10,13 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.dataimport.DataImportService;
+import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.DataImporter;
 
 @RunWith(Arquillian.class)
 public class DataImportServiceEJBTest {
 
 	@EJB
-	private DataImportService dataImportService;
+	private DataImporter dataImportService;
 
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)

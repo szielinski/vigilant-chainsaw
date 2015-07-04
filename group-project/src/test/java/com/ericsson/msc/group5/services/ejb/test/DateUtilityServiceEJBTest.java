@@ -7,13 +7,13 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.validation.business.DateUtilityService;
+import com.ericsson.msc.failuremanagement.failureslog.validation.business.DateUtility;
 
 @RunWith(Arquillian.class)
 public class DateUtilityServiceEJBTest {
 
 	@EJB
-	private DateUtilityService service;
+	private DateUtility service;
 
 	@Test
 	public void testFormatDateAsString() {

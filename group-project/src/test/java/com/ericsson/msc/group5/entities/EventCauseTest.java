@@ -14,9 +14,9 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.EventCauseService;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCauseData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -26,7 +26,7 @@ public class EventCauseTest {
 	private EntityManager em;
 
 	@Inject
-	private EventCauseService eventCauseService;
+	private EventCauseData eventCauseService;
 
 	private static String INITIAL_DESCRIPTION = "RRC CONN SETUP-UE BEARERS REJECTED DUE TO ARP ADM REJ AND LICENSES MISSING";
 	private static String UPDATED_DESCRIPTION = "UE CTXT RELEASE-UNKNOWN OR ALREADY ALLOCATED ENB UE S1AP ID";

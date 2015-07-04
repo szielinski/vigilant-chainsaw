@@ -18,9 +18,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.FailureClassService;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureClass;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureClassData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -32,7 +32,7 @@ public class FailureClassTest {
 	private static String INITIAL_DESCRIPTION = "HIGH PRIORITY ACCESS";
 	
 	@Inject
-	private FailureClassService failureClassService;
+	private FailureClassData failureClassService;
 
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)

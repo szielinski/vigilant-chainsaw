@@ -16,11 +16,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCodeCK;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCodeDAO;
-import com.ericsson.msc.failuremanagement.failureslog.data.CountryDAO;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryCodeNetworkCodeDAO;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryDAO;
 
 @RunWith(Arquillian.class)
 public class JPACountryCodeNetworkCodeDAOTest {

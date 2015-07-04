@@ -10,15 +10,15 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.business.UserEquipmentService;
-import com.ericsson.msc.failuremanagement.failureslog.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.UserEquipmentData;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
 
 @RunWith(Arquillian.class)
 @Transactional
 public class UserEquipmentServiceEJBTest {
 
 	@EJB
-	private UserEquipmentService service;
+	private UserEquipmentData service;
 
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)

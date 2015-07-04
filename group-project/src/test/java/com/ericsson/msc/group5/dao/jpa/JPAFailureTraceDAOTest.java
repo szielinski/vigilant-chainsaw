@@ -13,11 +13,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureTrace;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureTraceDAO;
-import com.ericsson.msc.failuremanagement.failureslog.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 
 @RunWith(Arquillian.class)
 public class JPAFailureTraceDAOTest {

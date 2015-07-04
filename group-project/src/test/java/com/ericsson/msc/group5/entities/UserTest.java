@@ -18,7 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.accesscontrol.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.User;
 
 @RunWith(Arquillian.class)
 public class UserTest {

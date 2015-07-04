@@ -11,13 +11,13 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.validation.business.ValidatorServiceEJB;
+import com.ericsson.msc.failuremanagement.failureslog.validation.business.ValidatorBean;
 
 @RunWith(Arquillian.class)
 public class ValidatorServiceEJBTest {
 
 	@Inject
-	ValidatorServiceEJB validatorService;
+	ValidatorBean validatorService;
 
 	// validateFailureTraceRowFieldTypes
 	@Test

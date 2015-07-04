@@ -16,12 +16,12 @@ import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureTrace;
-import com.ericsson.msc.failuremanagement.failureslog.data.FailureTraceDAO;
-import com.ericsson.msc.failuremanagement.failureslog.data.JPAFailureTraceDAO;
-import com.ericsson.msc.failuremanagement.failureslog.dataimport.DataImportService;
-import com.ericsson.msc.failuremanagement.failureslog.dataimport.DataImportServiceEJB;
-import com.ericsson.msc.failuremanagement.validation.business.ValidatorServiceEJB;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.FailureTraceJPA;
+import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.DataImporter;
+import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.DataImporterBean;
+import com.ericsson.msc.failuremanagement.failureslog.validation.business.ValidatorBean;
 
 @RunWith(Arquillian.class)
 public class EventIdValidatorTest {
@@ -48,7 +48,7 @@ public class EventIdValidatorTest {
 	private Integer eventId6 = null;
 
 	@Inject
-	ValidatorServiceEJB service;
+	ValidatorBean service;
 	
 	@Test
 	public void validateEventId() {

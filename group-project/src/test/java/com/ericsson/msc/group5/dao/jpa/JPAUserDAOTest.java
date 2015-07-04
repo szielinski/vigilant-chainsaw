@@ -11,7 +11,7 @@ import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.accesscontrol.business.UserService;
+import com.ericsson.msc.failuremanagement.authorization.business.UserData;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -21,7 +21,7 @@ public class JPAUserDAOTest {
 	private EntityManager em;
 
 	@Inject
-	private UserService userService;
+	private UserData userService;
 
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)
