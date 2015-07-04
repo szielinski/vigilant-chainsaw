@@ -5,7 +5,8 @@ import javax.inject.Inject;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.services.ejb.ValidatorServiceEJB;
+
+import com.ericsson.msc.failuremanagement.validation.business.ValidatorServiceEJB;
 
 @RunWith(Arquillian.class)
 public class MarketValidatorTest {

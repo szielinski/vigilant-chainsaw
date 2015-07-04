@@ -6,7 +6,8 @@ import javax.ejb.EJB;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.services.DateUtilityService;
+
+import com.ericsson.msc.failuremanagement.validation.business.DateUtilityService;
 
 @RunWith(Arquillian.class)
 public class DateUtilityServiceEJBTest {

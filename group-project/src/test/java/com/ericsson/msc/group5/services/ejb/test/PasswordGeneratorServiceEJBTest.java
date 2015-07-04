@@ -5,7 +5,8 @@ import javax.ejb.EJB;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.services.PasswordGeneratorService;
+
+import com.ericsson.msc.failuremanagement.accesscontrol.business.PasswordGeneratorService;
 
 @RunWith(Arquillian.class)
 public class PasswordGeneratorServiceEJBTest {

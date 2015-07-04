@@ -9,8 +9,9 @@ import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.entities.UserEquipment;
-import com.ericsson.msc.group5.services.UserEquipmentService;
+
+import com.ericsson.msc.failuremanagement.failureslog.business.UserEquipmentService;
+import com.ericsson.msc.failuremanagement.failureslog.data.UserEquipment;
 
 @RunWith(Arquillian.class)
 @Transactional

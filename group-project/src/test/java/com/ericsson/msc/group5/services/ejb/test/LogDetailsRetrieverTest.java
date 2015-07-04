@@ -7,7 +7,8 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.json.simple.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.services.LogDetailsRetrieverService;
+
+import com.ericsson.msc.failuremanagement.failureslog.business.LogDetailsRetrieverService;
 
 @RunWith(Arquillian.class)
 public class LogDetailsRetrieverTest {

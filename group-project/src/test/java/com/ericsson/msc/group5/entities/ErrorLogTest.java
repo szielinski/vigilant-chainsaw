@@ -12,6 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import com.ericsson.msc.failuremanagement.validation.data.ErrorLog;
+
 @RunWith(Arquillian.class)
 public class ErrorLogTest {
 

@@ -17,7 +17,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.services.FailureClassService;
+
+import com.ericsson.msc.failuremanagement.failureslog.business.FailureClassService;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.data.FailureClass;
 
 @RunWith(Arquillian.class)
 @Transactional

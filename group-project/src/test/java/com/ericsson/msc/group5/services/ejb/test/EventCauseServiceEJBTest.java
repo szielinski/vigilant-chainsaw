@@ -7,9 +7,10 @@ import javax.ejb.EJB;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.entities.EventCause;
-import com.ericsson.msc.group5.entities.EventCauseCK;
-import com.ericsson.msc.group5.services.EventCauseService;
+
+import com.ericsson.msc.failuremanagement.failureslog.business.EventCauseService;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
 
 @RunWith(Arquillian.class)
 public class EventCauseServiceEJBTest {

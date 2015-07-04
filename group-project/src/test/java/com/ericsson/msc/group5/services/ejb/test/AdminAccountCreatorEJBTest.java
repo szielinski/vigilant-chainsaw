@@ -18,7 +18,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.group5.services.UserService;
+import com.ericsson.msc.failuremanagement.accesscontrol.business.UserService;
 
 @RunWith(Arquillian.class)
 public class AdminAccountCreatorEJBTest {

@@ -5,9 +5,10 @@ import javax.ejb.EJB;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.entities.User;
-import com.ericsson.msc.group5.services.UserAuthenticationService;
-import com.ericsson.msc.group5.services.UserService;
+
+import com.ericsson.msc.failuremanagement.accesscontrol.business.UserAuthenticationService;
+import com.ericsson.msc.failuremanagement.accesscontrol.business.UserService;
+import com.ericsson.msc.failuremanagement.accesscontrol.data.User;
 
 @RunWith(Arquillian.class)
 public class UserAuthenicationServiceEJBTest {

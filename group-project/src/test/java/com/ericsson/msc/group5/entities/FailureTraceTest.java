@@ -13,12 +13,21 @@ import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.dao.FailureTraceDAO;
-import com.ericsson.msc.group5.services.CountryCodeNetworkCodeService;
-import com.ericsson.msc.group5.services.EventCauseService;
-import com.ericsson.msc.group5.services.FailureClassService;
-import com.ericsson.msc.group5.services.FailureTraceService;
-import com.ericsson.msc.group5.services.UserEquipmentService;
+
+import com.ericsson.msc.failuremanagement.failureslog.business.CountryCodeNetworkCodeService;
+import com.ericsson.msc.failuremanagement.failureslog.business.EventCauseService;
+import com.ericsson.msc.failuremanagement.failureslog.business.FailureClassService;
+import com.ericsson.msc.failuremanagement.failureslog.business.FailureTraceService;
+import com.ericsson.msc.failuremanagement.failureslog.business.UserEquipmentService;
+import com.ericsson.msc.failuremanagement.failureslog.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCode;
+import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.data.FailureClass;
+import com.ericsson.msc.failuremanagement.failureslog.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.data.FailureTraceDAO;
+import com.ericsson.msc.failuremanagement.failureslog.data.UserEquipment;
 
 @RunWith(Arquillian.class)
 @Transactional

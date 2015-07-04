@@ -9,10 +9,11 @@ import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
 import org.jboss.arquillian.transaction.api.annotation.Transactional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.ericsson.msc.group5.entities.Country;
-import com.ericsson.msc.group5.entities.CountryCodeNetworkCode;
-import com.ericsson.msc.group5.entities.CountryCodeNetworkCodeCK;
-import com.ericsson.msc.group5.services.CountryCodeNetworkCodeService;
+
+import com.ericsson.msc.failuremanagement.failureslog.business.CountryCodeNetworkCodeService;
+import com.ericsson.msc.failuremanagement.failureslog.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCode;
+import com.ericsson.msc.failuremanagement.failureslog.data.CountryCodeNetworkCodeCK;
 
 @RunWith(Arquillian.class)
 @Transactional

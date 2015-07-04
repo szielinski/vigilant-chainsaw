@@ -17,10 +17,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.group5.dao.EventCauseDAO;
-import com.ericsson.msc.group5.dao.FailureTraceDAO;
-import com.ericsson.msc.group5.entities.EventCause;
-import com.ericsson.msc.group5.entities.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.data.EventCauseDAO;
+import com.ericsson.msc.failuremanagement.failureslog.data.FailureTraceDAO;
 
 @RunWith(Arquillian.class)
 public class JPAEventCauseDAOTest {

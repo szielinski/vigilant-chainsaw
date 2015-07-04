@@ -18,9 +18,9 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.group5.dao.ErrorLogDAO;
-import com.ericsson.msc.group5.entities.ErrorLog;
-import com.ericsson.msc.group5.services.ErrorLogWriterService;
+import com.ericsson.msc.failuremanagement.validation.business.ErrorLogWriterService;
+import com.ericsson.msc.failuremanagement.validation.data.ErrorLog;
+import com.ericsson.msc.failuremanagement.validation.data.ErrorLogDAO;
 
 @RunWith(Arquillian.class)
 public class ErrorLogServiceEJBTest {

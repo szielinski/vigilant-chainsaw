@@ -14,8 +14,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.group5.dao.CountryDAO;
-import com.ericsson.msc.group5.entities.Country;
+import com.ericsson.msc.failuremanagement.failureslog.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.data.CountryDAO;
 
 @RunWith(Arquillian.class)
 public class JPACountryDAOTest {

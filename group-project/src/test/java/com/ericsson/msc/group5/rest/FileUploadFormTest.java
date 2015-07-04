@@ -3,6 +3,8 @@ package com.ericsson.msc.group5.rest;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+import com.ericsson.msc.failuremanagement.failureslog.dataimport.manual.FileUploadForm;
+
 public class FileUploadFormTest {
 
 	@Test
