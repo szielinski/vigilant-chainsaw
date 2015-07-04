@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.UserEquipmentData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -23,20 +23,20 @@ public class UserEquipmentServiceEJBTest {
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)
 	public void addUserEquipmentTest() {
-		UserEquipment [] userEquipmentArray = {
-				new UserEquipment(1, "one", "one", "one", "one", "one", "one", "one", "one"),
-				new UserEquipment(2, "two", "two", "two", "two", "two", "two", "two", "two")};
+		UserEquipmentEntity [] userEquipmentArray = {
+				new UserEquipmentEntity(1, "one", "one", "one", "one", "one", "one", "one", "one"),
+				new UserEquipmentEntity(2, "two", "two", "two", "two", "two", "two", "two", "two")};
 
-		Collection <UserEquipment> userEquipments = new ArrayList <>();
-		for (UserEquipment ue : userEquipmentArray) {
+		Collection <UserEquipmentEntity> userEquipments = new ArrayList <>();
+		for (UserEquipmentEntity ue : userEquipmentArray) {
 			userEquipments.add(ue);
 		}
 
 		service.addUserEquipments(userEquipments);
 
-		Collection <UserEquipment> retrievedUserEquipment = service.getAllUserEquipments();
+		Collection <UserEquipmentEntity> retrievedUserEquipment = service.getAllUserEquipments();
 
-		for (UserEquipment ue : retrievedUserEquipment) {
+		for (UserEquipmentEntity ue : retrievedUserEquipment) {
 			assertTrue("An object failed to be retrieved", userEquipments.contains(ue));
 			assertTrue(ue.equals(ue));
 			assertTrue(ue.hashCode() == ue.hashCode());

@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
  * Composite Key that helps to map/uniquely identify an event using a combination of Cause Code/Event id.
  */
 @Embeddable
-public class EventCauseCK implements Serializable {
+public class EventCauseEntityCK implements Serializable {
 
 	private static final long serialVersionUID = 3373166981656864744L;
 
@@ -20,7 +20,7 @@ public class EventCauseCK implements Serializable {
 	/**
 	 * No-args constructor used by the JPA.
 	 */
-	public EventCauseCK() {
+	public EventCauseEntityCK() {
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class EventCauseCK implements Serializable {
 	 *            The second part of the composite key - a non-unique Event id. This key is non-unique by itself, but forms a unique composite key when combined
 	 *            with the Cause Code.
 	 */
-	public EventCauseCK(Integer causeCode, Integer eventId) {
+	public EventCauseEntityCK(Integer causeCode, Integer eventId) {
 		super();
 		this.causeCode = causeCode;
 		this.eventId = eventId;
@@ -47,7 +47,7 @@ public class EventCauseCK implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		EventCauseCK other = (EventCauseCK) obj;
+		EventCauseEntityCK other = (EventCauseEntityCK) obj;
 		if (causeCode != other.causeCode)
 			return false;
 		if (eventId != other.eventId)

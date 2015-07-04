@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.authorization.business.UserAuthenticator;
 import com.ericsson.msc.failuremanagement.authorization.business.UserData;
-import com.ericsson.msc.failuremanagement.authorization.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 
 @RunWith(Arquillian.class)
 public class UserAuthenicationServiceEJBTest {
@@ -22,7 +22,7 @@ public class UserAuthenicationServiceEJBTest {
 	@Test
 	public void authenticateUserTest() {
 		userService.addUser("John", "nothing", "administrator");
-		User user = userService.getUser("John");
+		UserEntity user = userService.getUser("John");
 		assertEquals(service.authenticateUser("John", "nothing"), "administrator");
 	}
 

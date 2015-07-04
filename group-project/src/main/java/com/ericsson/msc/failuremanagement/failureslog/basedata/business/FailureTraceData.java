@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Date;
 import javax.ejb.Local;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
 import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
 
 /**
@@ -15,13 +15,13 @@ import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
 @Local
 public interface FailureTraceData {
 
-	public void addFailureTrace(FailureTrace failureTrace);
+	public void addFailureTrace(FailureTraceEntity failureTrace);
 
-	public void addFailureTraces(Collection <FailureTrace> failureTraces);
+	public void addFailureTraces(Collection <FailureTraceEntity> failureTraces);
 
 	public Collection <String> getImsiOfFailureByTimePeriod(Date startTime, Date endTime);
 
-	public Collection <EventCause> getEventCauseCombinations(String imsi);
+	public Collection <EventCauseEntity> getEventCauseCombinations(String imsi);
 
 	public Collection <Integer> getCauseCodesForImsi(String imsi);
 
@@ -33,7 +33,7 @@ public interface FailureTraceData {
 
 	public Collection <String> getEventCauseCombinationsForModel(String model);
 
-	public Collection <FailureTrace> getAllFailureTraces();
+	public Collection <FailureTraceEntity> getAllFailureTraces();
 
 	public Collection <String> getTop10MarketOperatorCellIdCombinations(Date dateOne, Date dateTwo);
 
@@ -47,7 +47,7 @@ public interface FailureTraceData {
 
 	public Collection <String> getAllModels();
 
-	public Collection <FailureClass> getAllFailureClasses();
+	public Collection <FailureClassEntity> getAllFailureClasses();
 
 	public Collection <ErrorLog> getErrorLogByImportDate(String importDate);
 

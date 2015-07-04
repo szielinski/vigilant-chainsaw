@@ -3,7 +3,7 @@ package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 import java.util.Collection;
 import javax.ejb.Local;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
 
 /**
  * UserEquipment service EJB interface.
@@ -11,10 +11,10 @@ import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmen
 @Local
 public interface UserEquipmentData {
 
-	public Collection <UserEquipment> getAllUserEquipments();
+	public Collection <UserEquipmentEntity> getAllUserEquipments();
 
-	public void addUserEquipments(Collection <UserEquipment> userEquipments);
+	public void addUserEquipments(Collection <UserEquipmentEntity> userEquipments);
 
-	public void addUserEquipment(UserEquipment userEquipment);
+	public void addUserEquipment(UserEquipmentEntity userEquipment);
 
 }

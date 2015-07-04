@@ -15,22 +15,22 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "country_code_network_code")
-@NamedQueries({@NamedQuery(name = "findAllCountryCodeNetworkCodes", query = "SELECT c FROM CountryCodeNetworkCode c")})
-public class CountryCodeNetworkCode {
+@NamedQueries({@NamedQuery(name = "findAllCountryCodeNetworkCodes", query = "SELECT c FROM CountryCodeNetworkCodeEntity c")})
+public class CountryCodeNetworkCodeEntity {
 
 	@Id
 	@Column(name = "country_code_network_code")
-	private CountryCodeNetworkCodeCK countryCodeNetworkCode;
+	private CountryCodeNetworkCodeEntittyCK countryCodeNetworkCode;
 	@Column(length = 100)
 	private String operator;
 
-	@OneToMany(mappedBy = "countryCodeNetworkCode", targetEntity = FailureTrace.class)
-	private Collection <FailureTrace> failureTrace;
+	@OneToMany(mappedBy = "countryCodeNetworkCode", targetEntity = FailureTraceEntity.class)
+	private Collection <FailureTraceEntity> failureTrace;
 
 	/**
 	 * No-args constructor used by the JPA.
 	 */
-	public CountryCodeNetworkCode() {
+	public CountryCodeNetworkCodeEntity() {
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class CountryCodeNetworkCode {
 	 * @param operator
 	 *            Operator name for the Country/Network combination.
 	 */
-	public CountryCodeNetworkCode(CountryCodeNetworkCodeCK countryCodeNetworkCode, String operator) {
+	public CountryCodeNetworkCodeEntity(CountryCodeNetworkCodeEntittyCK countryCodeNetworkCode, String operator) {
 		this.countryCodeNetworkCode = countryCodeNetworkCode;
 		this.operator = operator;
 	}
@@ -54,11 +54,11 @@ public class CountryCodeNetworkCode {
 		this.operator = operator;
 	}
 
-	public CountryCodeNetworkCodeCK getCountryCodeNetworkCode() {
+	public CountryCodeNetworkCodeEntittyCK getCountryCodeNetworkCode() {
 		return countryCodeNetworkCode;
 	}
 
-	public void setCountryCodeNetworkCode(CountryCodeNetworkCodeCK countryCodeNetworkCode) {
+	public void setCountryCodeNetworkCode(CountryCodeNetworkCodeEntittyCK countryCodeNetworkCode) {
 		this.countryCodeNetworkCode = countryCodeNetworkCode;
 	}
 	@Override
@@ -77,7 +77,7 @@ public class CountryCodeNetworkCode {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CountryCodeNetworkCode other = (CountryCodeNetworkCode) obj;
+		CountryCodeNetworkCodeEntity other = (CountryCodeNetworkCodeEntity) obj;
 		if (countryCodeNetworkCode == null) {
 			if (other.countryCodeNetworkCode != null)
 				return false;

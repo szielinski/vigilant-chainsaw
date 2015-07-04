@@ -5,9 +5,9 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 
 public class FailureTraceJPA implements FailureTraceDAO {
@@ -16,7 +16,7 @@ public class FailureTraceJPA implements FailureTraceDAO {
 	private EntityManager em;
 
 	@Override
-	public Collection <EventCause> getEventCauseForImsi(String imsi) {
+	public Collection <EventCauseEntity> getEventCauseForImsi(String imsi) {
 		return em.createNamedQuery("getEventCauseCombinations").setParameter("givenImsi", imsi).getResultList();
 	}
 
@@ -60,18 +60,18 @@ public class FailureTraceJPA implements FailureTraceDAO {
 	}
 
 	@Override
-	public Collection <FailureTrace> getAllFailureTraces() {
+	public Collection <FailureTraceEntity> getAllFailureTraces() {
 		return em.createNamedQuery("getAllFailureTraces").getResultList();
 	}
 
 	@Override
-	public void insertFailureTrace(FailureTrace failureTrace) {
+	public void insertFailureTrace(FailureTraceEntity failureTrace) {
 		em.persist(failureTrace);
 	}
 
 	@Override
-	public void batchInsertFailureTrace(Collection <FailureTrace> failureTraceList) {
-		for (FailureTrace failureTrace : failureTraceList) {
+	public void batchInsertFailureTrace(Collection <FailureTraceEntity> failureTraceList) {
+		for (FailureTraceEntity failureTrace : failureTraceList) {
 			em.persist(failureTrace);
 		}
 	}
@@ -107,7 +107,7 @@ public class FailureTraceJPA implements FailureTraceDAO {
 	}
 
 	@Override
-	public Collection <FailureClass> getAllFailureClasses() {
+	public Collection <FailureClassEntity> getAllFailureClasses() {
 		return em.createNamedQuery("getAllFailureClasses").getResultList();
 	}
 }

@@ -11,9 +11,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.CountryCodeNetworkCodeData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntittyCK;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -25,30 +25,30 @@ public class CountryCodeNetworkCodeServiceEJBTest {
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)
 	public void addCountryCodeNetworkCodeTest() {
-		Country country = new Country(1, "country");
-		CountryCodeNetworkCodeCK ck = new CountryCodeNetworkCodeCK(country, 1);
-		CountryCodeNetworkCode ccncck = new CountryCodeNetworkCode(ck, "one");
+		CountryEntity country = new CountryEntity(1, "country");
+		CountryCodeNetworkCodeEntittyCK ck = new CountryCodeNetworkCodeEntittyCK(country, 1);
+		CountryCodeNetworkCodeEntity ccncck = new CountryCodeNetworkCodeEntity(ck, "one");
 
-		Country countryTwo = new Country(2, "countryTwo");
-		CountryCodeNetworkCodeCK ckTwo = new CountryCodeNetworkCodeCK(countryTwo, 2);
-		CountryCodeNetworkCode ccncckTwo = new CountryCodeNetworkCode(ckTwo, "two");
+		CountryEntity countryTwo = new CountryEntity(2, "countryTwo");
+		CountryCodeNetworkCodeEntittyCK ckTwo = new CountryCodeNetworkCodeEntittyCK(countryTwo, 2);
+		CountryCodeNetworkCodeEntity ccncckTwo = new CountryCodeNetworkCodeEntity(ckTwo, "two");
 
-		Country countryThree = new Country(3, "countryThree");
-		CountryCodeNetworkCodeCK ckThree = new CountryCodeNetworkCodeCK(countryThree, 3);
-		CountryCodeNetworkCode ccncckThree = new CountryCodeNetworkCode(ckThree, "Three");
+		CountryEntity countryThree = new CountryEntity(3, "countryThree");
+		CountryCodeNetworkCodeEntittyCK ckThree = new CountryCodeNetworkCodeEntittyCK(countryThree, 3);
+		CountryCodeNetworkCodeEntity ccncckThree = new CountryCodeNetworkCodeEntity(ckThree, "Three");
 
-		CountryCodeNetworkCode [] ccncArray = {ccncck, ccncckTwo, ccncckThree};
+		CountryCodeNetworkCodeEntity [] ccncArray = {ccncck, ccncckTwo, ccncckThree};
 
-		Collection <CountryCodeNetworkCode> countryCodeNetworkCodesOriginal = new ArrayList <>();
-		for (CountryCodeNetworkCode c : ccncArray) {
+		Collection <CountryCodeNetworkCodeEntity> countryCodeNetworkCodesOriginal = new ArrayList <>();
+		for (CountryCodeNetworkCodeEntity c : ccncArray) {
 			countryCodeNetworkCodesOriginal.add(c);
 		}
 
 		service.addCountryCodeNetworkCodes(countryCodeNetworkCodesOriginal);
 
-		Collection <CountryCodeNetworkCode> retrievedCountryNetworkCodes = service.getCountryCodeNetworkCodes();
+		Collection <CountryCodeNetworkCodeEntity> retrievedCountryNetworkCodes = service.getCountryCodeNetworkCodes();
 		System.out.println("Size of collection: " + retrievedCountryNetworkCodes.size());
-		for (CountryCodeNetworkCode c : retrievedCountryNetworkCodes) {
+		for (CountryCodeNetworkCodeEntity c : retrievedCountryNetworkCodes) {
 			assertTrue("An object failed to be retrieved", countryCodeNetworkCodesOriginal.contains(c));
 		}
 	}

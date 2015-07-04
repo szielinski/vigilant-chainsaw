@@ -2,7 +2,7 @@ package com.ericsson.msc.failuremanagement.authorization.business;
 
 import javax.ejb.Local;
 
-import com.ericsson.msc.failuremanagement.authorization.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 
 /**
  * User service EJB interface.
@@ -12,5 +12,5 @@ public interface UserData {
 
 	public boolean addUser(String username, String password, String userRole);
 
-	User getUser(String username);
+	UserEntity getUser(String username);
 }

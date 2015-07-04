@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
  * Composite Key that helps to map/uniquely identify an operator using a combination of Country/Network.
  */
 @Embeddable
-public class CountryCodeNetworkCodeCK implements Serializable {
+public class CountryCodeNetworkCodeEntittyCK implements Serializable {
 
 	private static final long serialVersionUID = -4973782694581889595L;
 
@@ -18,12 +18,12 @@ public class CountryCodeNetworkCodeCK implements Serializable {
 	private Integer networkCode;
 	@ManyToOne
 	@JoinColumn(name = "country_code")
-	private Country country;
+	private CountryEntity country;
 
 	/**
 	 * No-args constructor used by the JPA.
 	 */
-	public CountryCodeNetworkCodeCK() {
+	public CountryCodeNetworkCodeEntittyCK() {
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class CountryCodeNetworkCodeCK implements Serializable {
 	 *            The second part of the composite key - a non-unique network code id. This key is non-unique by itself, but forms a unique composite key when
 	 *            combined with the country code.
 	 */
-	public CountryCodeNetworkCodeCK(Country country, Integer networkCode) {
+	public CountryCodeNetworkCodeEntittyCK(CountryEntity country, Integer networkCode) {
 		this.country = country;
 		this.networkCode = networkCode;
 	}
@@ -57,7 +57,7 @@ public class CountryCodeNetworkCodeCK implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CountryCodeNetworkCodeCK other = (CountryCodeNetworkCodeCK) obj;
+		CountryCodeNetworkCodeEntittyCK other = (CountryCodeNetworkCodeEntittyCK) obj;
 		if (country == null) {
 			if (other.country != null)
 				return false;
@@ -73,11 +73,11 @@ public class CountryCodeNetworkCodeCK implements Serializable {
 		return true;
 	}
 
-	public Country getCountry() {
+	public CountryEntity getCountry() {
 		return country;
 	}
 
-	public void setCountry(Country country) {
+	public void setCountry(CountryEntity country) {
 		this.country = country;
 	}
 

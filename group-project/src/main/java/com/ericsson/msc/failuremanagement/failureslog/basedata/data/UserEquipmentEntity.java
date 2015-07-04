@@ -16,8 +16,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 @Entity
 @Table(name = "user_equipment")
-@NamedQueries({@NamedQuery(name = "findAllUserEquipment", query = "SELECT u FROM UserEquipment u")})
-public class UserEquipment {
+@NamedQueries({@NamedQuery(name = "findAllUserEquipment", query = "SELECT u FROM UserEquipmentEntity u")})
+public class UserEquipmentEntity {
 
 	@Id
 	@Column(name = "type_allocation_code")
@@ -40,12 +40,12 @@ public class UserEquipment {
 	private String inputMode;
 
 	@OneToMany(mappedBy = "userEquipment")
-	private Collection <FailureTrace> failureTrace;
+	private Collection <FailureTraceEntity> failureTrace;
 
 	/**
 	 * No-args constructor used by the JPA.
 	 */
-	public UserEquipment() {
+	public UserEquipmentEntity() {
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class UserEquipment {
 	 * @param inputMode
 	 *            Input modes accepted by the device.
 	 */
-	public UserEquipment(Integer typeAllocationCode, String marketingName,
+	public UserEquipmentEntity(Integer typeAllocationCode, String marketingName,
 			String manufacturer, String accessCapability, String model,
 			String vendor, String userEquipmentType, String operatingSystem,
 			String inputMode) {
@@ -159,11 +159,11 @@ public class UserEquipment {
 	}
 
 	@JsonIgnore
-	public Collection <FailureTrace> getFailureTrace() {
+	public Collection <FailureTraceEntity> getFailureTrace() {
 		return failureTrace;
 	}
 
-	public void setFailureTrace(Collection <FailureTrace> failureTrace) {
+	public void setFailureTrace(Collection <FailureTraceEntity> failureTrace) {
 		this.failureTrace = failureTrace;
 	}
 
@@ -183,7 +183,7 @@ public class UserEquipment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserEquipment other = (UserEquipment) obj;
+		UserEquipmentEntity other = (UserEquipmentEntity) obj;
 		if (typeAllocationCode == null) {
 			if (other.typeAllocationCode != null)
 				return false;

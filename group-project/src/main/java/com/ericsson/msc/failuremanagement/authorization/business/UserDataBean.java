@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.ericsson.msc.failuremanagement.authorization.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 import com.ericsson.msc.failuremanagement.authorization.data.dao.UserDAO;
 
 @Stateless
@@ -26,12 +26,12 @@ public class UserDataBean implements UserData {
 		if (dao.getUser(username) != null){
 			return false;
 		}
-		dao.addUser(new User(username, passwordGeneratorService.generate(password), userRole));
+		dao.addUser(new UserEntity(username, passwordGeneratorService.generate(password), userRole));
 		return true;
 	}
 
 	@Override
-	public User getUser(String username) {
+	public UserEntity getUser(String username) {
 		return dao.getUser(username);
 	}
 }

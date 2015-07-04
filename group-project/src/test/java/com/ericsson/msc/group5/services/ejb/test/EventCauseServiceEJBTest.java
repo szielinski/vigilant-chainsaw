@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCauseData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
 
 @RunWith(Arquillian.class)
 public class EventCauseServiceEJBTest {
@@ -20,21 +20,21 @@ public class EventCauseServiceEJBTest {
 
 	@Test
 	public void addEventCause() {
-		EventCauseCK ckOne = new EventCauseCK(1, 1);
-		EventCauseCK ckTwo = new EventCauseCK(2, 2);
-		EventCauseCK ckThree = new EventCauseCK(3, 3);
-		EventCause [] eventCauseArray = {new EventCause(ckOne, "first"), new EventCause(ckTwo, "second"), new EventCause(ckThree, "third")};
+		EventCauseEntityCK ckOne = new EventCauseEntityCK(1, 1);
+		EventCauseEntityCK ckTwo = new EventCauseEntityCK(2, 2);
+		EventCauseEntityCK ckThree = new EventCauseEntityCK(3, 3);
+		EventCauseEntity [] eventCauseArray = {new EventCauseEntity(ckOne, "first"), new EventCauseEntity(ckTwo, "second"), new EventCauseEntity(ckThree, "third")};
 
-		Collection <EventCause> eventCauses = new ArrayList <>();
-		for (EventCause e : eventCauseArray) {
+		Collection <EventCauseEntity> eventCauses = new ArrayList <>();
+		for (EventCauseEntity e : eventCauseArray) {
 			eventCauses.add(e);
 		}
 
 		service.addEventCauses(eventCauses);
 
-		Collection <EventCause> retrievedEventCauses = service.getCauseCode();
+		Collection <EventCauseEntity> retrievedEventCauses = service.getCauseCode();
 
-		for (EventCause e : retrievedEventCauses) {
+		for (EventCauseEntity e : retrievedEventCauses) {
 			assertTrue("An object failed to be retrieved", eventCauses.contains(e));
 			assertTrue(e.equals(e));
 			assertTrue(e.hashCode() == e.hashCode());

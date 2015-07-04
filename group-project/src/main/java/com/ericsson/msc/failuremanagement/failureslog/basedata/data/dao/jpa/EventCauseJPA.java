@@ -4,8 +4,8 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.EventCauseDAO;
 
 public class EventCauseJPA implements EventCauseDAO {
@@ -14,23 +14,23 @@ public class EventCauseJPA implements EventCauseDAO {
 	private EntityManager em;
 
 	@Override
-	public Collection <EventCause> getAllEventCauses() {
+	public Collection <EventCauseEntity> getAllEventCauses() {
 		return em.createNamedQuery("findAllEventCauses").getResultList();
 	}
 
 	@Override
-	public EventCause getEventCause(int causeCode, int eventId) {
-		return em.find(EventCause.class, new EventCauseCK(causeCode, eventId));
+	public EventCauseEntity getEventCause(int causeCode, int eventId) {
+		return em.find(EventCauseEntity.class, new EventCauseEntityCK(causeCode, eventId));
 	}
 
 	@Override
-	public void insertEventCause(EventCause eventCause) {
+	public void insertEventCause(EventCauseEntity eventCause) {
 		em.persist(eventCause);
 	}
 
 	@Override
-	public void batchInsertEventCause(Collection <EventCause> eventCauseList) {
-		for(EventCause eventCause : eventCauseList)
+	public void batchInsertEventCause(Collection <EventCauseEntity> eventCauseList) {
+		for(EventCauseEntity eventCause : eventCauseList)
 			em.persist(eventCause);
 	}
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.authorization.business.UserData;
-import com.ericsson.msc.failuremanagement.authorization.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 
 @RunWith(Arquillian.class)
 public class UserServiceEJBTests {
@@ -18,7 +18,7 @@ public class UserServiceEJBTests {
 	@Test
 	public void testUserIsAdded() {
 		service.addUser("SAM", "password", "administrator");
-		User newUser = service.getUser("SAM");
+		UserEntity newUser = service.getUser("SAM");
 		assertEquals(newUser.getUsername(), "SAM");
 	}
 

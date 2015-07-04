@@ -14,9 +14,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntittyCK;
 
 @RunWith(Arquillian.class)
 public class CountryCodeNetworkCodeTest {
@@ -43,22 +43,22 @@ public class CountryCodeNetworkCodeTest {
 
 	@Test
 	public void basicCRUDTest() throws Exception {
-		Country c = new Country(0, "country");
+		CountryEntity c = new CountryEntity(0, "country");
 		em.persist(c);
-		CountryCodeNetworkCodeCK pk = new CountryCodeNetworkCodeCK(c, 1);
-		CountryCodeNetworkCode createdCountryCodeNetworkCode = new CountryCodeNetworkCode(pk, INITIAL_OPERATOR);
+		CountryCodeNetworkCodeEntittyCK pk = new CountryCodeNetworkCodeEntittyCK(c, 1);
+		CountryCodeNetworkCodeEntity createdCountryCodeNetworkCode = new CountryCodeNetworkCodeEntity(pk, INITIAL_OPERATOR);
 		em.persist(createdCountryCodeNetworkCode);
 
-		CountryCodeNetworkCode loadedCountryCodeNetworkCode = em.find(CountryCodeNetworkCode.class, pk);
+		CountryCodeNetworkCodeEntity loadedCountryCodeNetworkCode = em.find(CountryCodeNetworkCodeEntity.class, pk);
 		assertEquals("Failed to insert", INITIAL_OPERATOR, loadedCountryCodeNetworkCode.getOperator());
 
 		loadedCountryCodeNetworkCode.setOperator(UPDATED_OPERATOR);
-		CountryCodeNetworkCode updatedCountryCodeNetworkCode = em.find(CountryCodeNetworkCode.class, pk);
+		CountryCodeNetworkCodeEntity updatedCountryCodeNetworkCode = em.find(CountryCodeNetworkCodeEntity.class, pk);
 
 		assertEquals("Failed to update", UPDATED_OPERATOR, updatedCountryCodeNetworkCode.getOperator());
 
 		em.remove(updatedCountryCodeNetworkCode);
-		CountryCodeNetworkCode shouldBeNull = em.find(CountryCodeNetworkCode.class, pk);
+		CountryCodeNetworkCodeEntity shouldBeNull = em.find(CountryCodeNetworkCodeEntity.class, pk);
 		assertNull("Failed to delete", shouldBeNull);
 	}
 
@@ -66,9 +66,9 @@ public class CountryCodeNetworkCodeTest {
 	public void compositeKeyTest() {
 		int oldCode = 21;
 		int newCode = 5000;
-		Country newCountry = new Country(newCode, "new country");
+		CountryEntity newCountry = new CountryEntity(newCode, "new country");
 
-		CountryCodeNetworkCodeCK ck = new CountryCodeNetworkCodeCK(new Country(oldCode, "country"), oldCode);
+		CountryCodeNetworkCodeEntittyCK ck = new CountryCodeNetworkCodeEntittyCK(new CountryEntity(oldCode, "country"), oldCode);
 		ck.setCountry(newCountry);
 		ck.setNetworkCode(newCode);
 		assertEquals("failed to set network code", newCode, (int) ck.getNetworkCode());
@@ -77,21 +77,21 @@ public class CountryCodeNetworkCodeTest {
 
 	@Test
 	public void testGeneratedMethods() {
-		Country countryOne = new Country(0, "Test country");
+		CountryEntity countryOne = new CountryEntity(0, "Test country");
 
-		CountryCodeNetworkCodeCK countryCodeNetworkCodeCKOne = new CountryCodeNetworkCodeCK();
+		CountryCodeNetworkCodeEntittyCK countryCodeNetworkCodeCKOne = new CountryCodeNetworkCodeEntittyCK();
 		countryCodeNetworkCodeCKOne.setCountry(countryOne);
 		countryCodeNetworkCodeCKOne.setNetworkCode(0);
 
-		CountryCodeNetworkCodeCK countryCodeNetworkCodeCKTwo = new CountryCodeNetworkCodeCK();
+		CountryCodeNetworkCodeEntittyCK countryCodeNetworkCodeCKTwo = new CountryCodeNetworkCodeEntittyCK();
 		countryCodeNetworkCodeCKTwo.setCountry(countryOne);
 		countryCodeNetworkCodeCKTwo.setNetworkCode(1);
 
-		CountryCodeNetworkCode countryCodeNetworkCodeOne = new CountryCodeNetworkCode();
+		CountryCodeNetworkCodeEntity countryCodeNetworkCodeOne = new CountryCodeNetworkCodeEntity();
 		countryCodeNetworkCodeOne.setCountryCodeNetworkCode(countryCodeNetworkCodeCKOne);
 		countryCodeNetworkCodeOne.setOperator(INITIAL_OPERATOR);
 
-		CountryCodeNetworkCode countryCodeNetworkCodeTwo = new CountryCodeNetworkCode();
+		CountryCodeNetworkCodeEntity countryCodeNetworkCodeTwo = new CountryCodeNetworkCodeEntity();
 		countryCodeNetworkCodeTwo.setCountryCodeNetworkCode(countryCodeNetworkCodeCKTwo);
 		countryCodeNetworkCodeTwo.setOperator(UPDATED_OPERATOR);
 
@@ -112,33 +112,33 @@ public class CountryCodeNetworkCodeTest {
 		assertFalse(countryCodeNetworkCodeOne.equals(countryCodeNetworkCodeTwo));
 		assertFalse(countryCodeNetworkCodeOne.equals(new String()));
 		// Check .equals on empty required field
-		countryCodeNetworkCodeTwo = new CountryCodeNetworkCode();
+		countryCodeNetworkCodeTwo = new CountryCodeNetworkCodeEntity();
 		assertFalse(countryCodeNetworkCodeOne.equals(countryCodeNetworkCodeTwo));
 	}
 	
 	@Test
 	public void testEquality(){
-		CountryCodeNetworkCodeCK ck = new CountryCodeNetworkCodeCK(new Country(1, "country"), 1);
-		CountryCodeNetworkCodeCK otherCK = new CountryCodeNetworkCodeCK(new Country(1, "other country"), 1);
+		CountryCodeNetworkCodeEntittyCK ck = new CountryCodeNetworkCodeEntittyCK(new CountryEntity(1, "country"), 1);
+		CountryCodeNetworkCodeEntittyCK otherCK = new CountryCodeNetworkCodeEntittyCK(new CountryEntity(1, "other country"), 1);
 		
-		CountryCodeNetworkCodeCK wrongCK1 = new CountryCodeNetworkCodeCK(new Country(2, "country"), 1);
-		CountryCodeNetworkCodeCK wrongCK2 = new CountryCodeNetworkCodeCK(new Country(1, "other country"), 2);
+		CountryCodeNetworkCodeEntittyCK wrongCK1 = new CountryCodeNetworkCodeEntittyCK(new CountryEntity(2, "country"), 1);
+		CountryCodeNetworkCodeEntittyCK wrongCK2 = new CountryCodeNetworkCodeEntittyCK(new CountryEntity(1, "other country"), 2);
 		
 		assertTrue(ck.equals(otherCK));
 		assertFalse(ck.equals(null));
 		assertFalse(ck.equals(new Integer(0)));
-		assertFalse(ck.equals(new CountryCodeNetworkCodeCK(new Country(2, "country"), 1)));
-		assertFalse(ck.equals(new CountryCodeNetworkCodeCK(new Country(1, "country"), 2)));
+		assertFalse(ck.equals(new CountryCodeNetworkCodeEntittyCK(new CountryEntity(2, "country"), 1)));
+		assertFalse(ck.equals(new CountryCodeNetworkCodeEntittyCK(new CountryEntity(1, "country"), 2)));
 		assertTrue(ck.hashCode() == (otherCK.hashCode()));
 		
-		CountryCodeNetworkCode cc = new CountryCodeNetworkCode(ck, "description");
-		CountryCodeNetworkCode otherCC = new CountryCodeNetworkCode(otherCK, "other description");
+		CountryCodeNetworkCodeEntity cc = new CountryCodeNetworkCodeEntity(ck, "description");
+		CountryCodeNetworkCodeEntity otherCC = new CountryCodeNetworkCodeEntity(otherCK, "other description");
 		
 		assertTrue(cc.equals(otherCC));
 		assertFalse(cc.equals(null));
 		assertFalse(cc.equals(new Integer(0)));
-		assertFalse(cc.equals(new CountryCodeNetworkCode(wrongCK1, "description")));
-		assertFalse(cc.equals(new CountryCodeNetworkCode(wrongCK2, "description")));
+		assertFalse(cc.equals(new CountryCodeNetworkCodeEntity(wrongCK1, "description")));
+		assertFalse(cc.equals(new CountryCodeNetworkCodeEntity(wrongCK2, "description")));
 		assertTrue(cc.hashCode() == (otherCC.hashCode()));
 	}
 

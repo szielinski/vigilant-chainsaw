@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureClassData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
 
 @RunWith(Arquillian.class)
 public class FailureClassServiceEJBTest {
@@ -19,18 +19,18 @@ public class FailureClassServiceEJBTest {
 
 	@Test
 	public void addFailureClassesTest() {
-		FailureClass [] failureClassArray = {new FailureClass(1, "first"), new FailureClass(2, "second"), new FailureClass(3, "third")};
+		FailureClassEntity [] failureClassArray = {new FailureClassEntity(1, "first"), new FailureClassEntity(2, "second"), new FailureClassEntity(3, "third")};
 
-		Collection <FailureClass> failureClasses = new ArrayList <>();
-		for (FailureClass f : failureClassArray) {
+		Collection <FailureClassEntity> failureClasses = new ArrayList <>();
+		for (FailureClassEntity f : failureClassArray) {
 			failureClasses.add(f);
 		}
 
 		failureClassServiceEJB.addFailureClasses(failureClasses);
 
-		Collection <FailureClass> retrievedFailureClasses = failureClassServiceEJB.getFailureClasses();
+		Collection <FailureClassEntity> retrievedFailureClasses = failureClassServiceEJB.getFailureClasses();
 
-		for (FailureClass f : retrievedFailureClasses) {
+		for (FailureClassEntity f : retrievedFailureClasses) {
 			assertTrue("An object failed to be retrieved", failureClasses.contains(f));
 			assertTrue(f.equals(f));
 			assertTrue(f.hashCode() == f.hashCode());

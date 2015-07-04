@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
 
 @RunWith(Arquillian.class)
 public class FailureTraceServiceEJBTest {
@@ -20,23 +20,23 @@ public class FailureTraceServiceEJBTest {
 	@Test
 	public void addFailureTracesTest() {
 
-		FailureTrace failureTraceOne = new FailureTrace();
+		FailureTraceEntity failureTraceOne = new FailureTraceEntity();
 		failureTraceOne.setFailureTraceId(10L);
-		FailureTrace failureTraceTwo = new FailureTrace();
+		FailureTraceEntity failureTraceTwo = new FailureTraceEntity();
 		failureTraceTwo.setFailureTraceId(20L);
 
-		FailureTrace [] failureTraceArray = {failureTraceOne, failureTraceTwo};
+		FailureTraceEntity [] failureTraceArray = {failureTraceOne, failureTraceTwo};
 
-		Collection <FailureTrace> failureTraces = new ArrayList <>();
-		for (FailureTrace f : failureTraceArray) {
+		Collection <FailureTraceEntity> failureTraces = new ArrayList <>();
+		for (FailureTraceEntity f : failureTraceArray) {
 			failureTraces.add(f);
 		}
 
 		service.addFailureTraces(failureTraces);
 
-		Collection <FailureTrace> retrievedFailureTraces = service.getAllFailureTraces();
+		Collection <FailureTraceEntity> retrievedFailureTraces = service.getAllFailureTraces();
 
-		for (FailureTrace f : retrievedFailureTraces) {
+		for (FailureTraceEntity f : retrievedFailureTraces) {
 			assertEquals(false, failureTraces.contains(f));
 		}
 	}

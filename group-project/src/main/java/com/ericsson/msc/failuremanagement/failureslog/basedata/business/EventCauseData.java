@@ -3,7 +3,7 @@ package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 import java.util.Collection;
 import javax.ejb.Local;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
 
 /**
  * EventCause service EJB interface.
@@ -11,9 +11,9 @@ import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
 @Local
 public interface EventCauseData {
 
-	public Collection <EventCause> getCauseCode();
+	public Collection <EventCauseEntity> getCauseCode();
 
-	public void addEventCauses(Collection <EventCause> eventCauses);
+	public void addEventCauses(Collection <EventCauseEntity> eventCauses);
 
-	public void addEventCause(EventCause testEventCause);
+	public void addEventCause(EventCauseEntity testEventCause);
 }

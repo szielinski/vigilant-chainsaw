@@ -8,9 +8,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
 import com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.ErrorLogDAO;
@@ -29,7 +29,7 @@ public class FailureTraceDataBean implements FailureTraceData {
 	private ErrorLogDAO errorLogDAO;
 
 	@Override
-	public Collection <EventCause> getEventCauseCombinations(String imsi) {
+	public Collection <EventCauseEntity> getEventCauseCombinations(String imsi) {
 		return dao.getEventCauseForImsi(imsi);
 	}
 
@@ -63,7 +63,7 @@ public class FailureTraceDataBean implements FailureTraceData {
 	}
 
 	@Override
-	public Collection <FailureTrace> getAllFailureTraces() {
+	public Collection <FailureTraceEntity> getAllFailureTraces() {
 		return dao.getAllFailureTraces();
 	}
 
@@ -73,7 +73,7 @@ public class FailureTraceDataBean implements FailureTraceData {
 	}
 
 	@Override
-	public void addFailureTraces(Collection <FailureTrace> failureTraces) {
+	public void addFailureTraces(Collection <FailureTraceEntity> failureTraces) {
 		dao.batchInsertFailureTrace(failureTraces);
 	}
 
@@ -107,7 +107,7 @@ public class FailureTraceDataBean implements FailureTraceData {
 	}
 
 	@Override
-	public Collection <FailureClass> getAllFailureClasses() {
+	public Collection <FailureClassEntity> getAllFailureClasses() {
 		return dao.getAllFailureClasses();
 	}
 
@@ -117,7 +117,7 @@ public class FailureTraceDataBean implements FailureTraceData {
 	}
 
 	@Override
-	public void addFailureTrace(FailureTrace failureTrace) {
+	public void addFailureTrace(FailureTraceEntity failureTrace) {
 		dao.insertFailureTrace(failureTrace);
 
 	}

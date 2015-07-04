@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
 
 @RunWith(Arquillian.class)
 public class CountryTest {
@@ -43,22 +43,22 @@ public class CountryTest {
 	public void basicCRUDTest() throws Exception {
 		int id = 213;
 		int newId = 2130;
-		Country createdC = new Country(id, INITIAL_COUNTRY);
+		CountryEntity createdC = new CountryEntity(id, INITIAL_COUNTRY);
 		em.persist(createdC);
 
 		commitTransaction();
 		em.clear();
-		Country loadedC = em.find(Country.class, id);
+		CountryEntity loadedC = em.find(CountryEntity.class, id);
 		assertEquals("Failed to insert", INITIAL_COUNTRY, loadedC.getCountry());
 
 		loadedC.setCountry(UPDATED_COUNTRY);
 		loadedC.setCountryCode(newId);
-		Country updatedC = em.find(Country.class, id);
+		CountryEntity updatedC = em.find(CountryEntity.class, id);
 		assertEquals("Failed to update", UPDATED_COUNTRY, updatedC.getCountry());
 		assertEquals("Failed to update", newId, (int) updatedC.getCountryCode());
 
 		em.remove(updatedC);
-		Country shouldBeNull = em.find(Country.class, id);
+		CountryEntity shouldBeNull = em.find(CountryEntity.class, id);
 		assertNull("Failed to delete", shouldBeNull);
 	}
 
@@ -66,8 +66,8 @@ public class CountryTest {
 	public void testGenerateMethods() {
 		int oldCode = 21;
 		int newCode = 5000;
-		Country countryOne = new Country(oldCode, "old country");
-		Country countryTwo = new Country(newCode, "new country");
+		CountryEntity countryOne = new CountryEntity(oldCode, "old country");
+		CountryEntity countryTwo = new CountryEntity(newCode, "new country");
 
 		// Hashcode and .equals test
 		assertTrue(countryOne.equals(countryOne));
@@ -83,7 +83,7 @@ public class CountryTest {
 		countryOne = null;
 		assertFalse(countryTwo.equals((countryOne)));
 		assertFalse(countryTwo.equals(new String()));
-		countryOne = new Country();
+		countryOne = new CountryEntity();
 		countryOne.setCountry("new country");
 		assertFalse(countryOne.equals(countryTwo));
 	}

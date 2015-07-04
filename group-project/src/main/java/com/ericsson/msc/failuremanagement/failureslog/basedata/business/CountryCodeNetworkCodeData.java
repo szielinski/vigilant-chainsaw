@@ -3,7 +3,7 @@ package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 import java.util.Collection;
 import javax.ejb.Local;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
 
 /**
  * CountryCodeNetworkCode service EJB interface.
@@ -11,9 +11,9 @@ import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeN
 @Local
 public interface CountryCodeNetworkCodeData {
 
-	public Collection <CountryCodeNetworkCode> getCountryCodeNetworkCodes();
+	public Collection <CountryCodeNetworkCodeEntity> getCountryCodeNetworkCodes();
 
-	public void addCountryCodeNetworkCodes(Collection <CountryCodeNetworkCode> countryNetworkCodes);
+	public void addCountryCodeNetworkCodes(Collection <CountryCodeNetworkCodeEntity> countryNetworkCodes);
 
-	public void addCountryCodeNetworkCode(CountryCodeNetworkCode countryCodeNetworkCode);
+	public void addCountryCodeNetworkCode(CountryCodeNetworkCodeEntity countryCodeNetworkCode);
 }

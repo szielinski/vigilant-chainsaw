@@ -19,14 +19,14 @@ import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCau
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureClassData;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceData;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.UserEquipmentData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntittyCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 
 @RunWith(Arquillian.class)
@@ -78,11 +78,11 @@ public class FailureTraceTest {
 	private final static String INITIAL_NE_VERSION = "12A";
 	private final static String UPDATED_NE_VERSION = "26B";
 
-	private FailureClass testFailureClass;
-	private EventCause testEventCause;
-	private UserEquipment testUserEquipment;
-	private Country testCountry;
-	private CountryCodeNetworkCode testCountryCodeNetworkCode;
+	private FailureClassEntity testFailureClass;
+	private EventCauseEntity testEventCause;
+	private UserEquipmentEntity testUserEquipment;
+	private CountryEntity testCountry;
+	private CountryCodeNetworkCodeEntity testCountryCodeNetworkCode;
 
 	private Long id = 0L;
 
@@ -102,7 +102,7 @@ public class FailureTraceTest {
 		// utx.begin();
 		// em.joinTransaction();
 
-		FailureTrace testFailureTrace = new FailureTrace();
+		FailureTraceEntity testFailureTrace = new FailureTraceEntity();
 		testFailureTrace.setFailureTraceId(0L);
 
 		testFailureTrace.setCellId(INITIAL_CELL_ID);
@@ -114,28 +114,28 @@ public class FailureTraceTest {
 		testFailureTrace.setIMSI(INITIAL_IMSI);
 		testFailureTrace.setNeVersion(INITIAL_NE_VERSION);
 
-		testUserEquipment = new UserEquipment(0, "marketing name", "manufacturer", "access capability", "model", "vendor", "user equipment type",
+		testUserEquipment = new UserEquipmentEntity(0, "marketing name", "manufacturer", "access capability", "model", "vendor", "user equipment type",
 				"operating system", "input mode");
 		userEquipmentService.addUserEquipment(testUserEquipment);
 		// em.persist(testUserEquipment);
 
 		testFailureTrace.setUserEquipment(testUserEquipment);
 
-		testFailureClass = new FailureClass(0, "description");
+		testFailureClass = new FailureClassEntity(0, "description");
 		testFailureTrace.setFailureClass(testFailureClass);
 		failureClassService.addFailureClass(testFailureClass);
 		// em.persist(testFailureClass);
-		testEventCause = new EventCause(new EventCauseCK(0, 0), "desc");
+		testEventCause = new EventCauseEntity(new EventCauseEntityCK(0, 0), "desc");
 		eventCauseService.addEventCause(testEventCause);
 		// em.persist(testEventCause);
 		testFailureTrace.setEventCause(testEventCause);
 
-		testCountry = new Country();
+		testCountry = new CountryEntity();
 		testCountry.setCountry("country");
 		testCountry.setCountryCode(231);
 		// countryService.insertCountry(testCountry);
 		// em.persist(testCountry);
-		testCountryCodeNetworkCode = new CountryCodeNetworkCode(new CountryCodeNetworkCodeCK(testCountry, 0), "operator");
+		testCountryCodeNetworkCode = new CountryCodeNetworkCodeEntity(new CountryCodeNetworkCodeEntittyCK(testCountry, 0), "operator");
 		testFailureTrace.setCountryCodeNetworkCode(testCountryCodeNetworkCode);
 		countryCodeNetworkCodeService.addCountryCodeNetworkCode(testCountryCodeNetworkCode);
 		// em.persist(testCountryCodeNetworkCode);
@@ -152,14 +152,14 @@ public class FailureTraceTest {
 	@Transactional(TransactionMode.ROLLBACK)
 	public void basicCRUDTest() throws Exception {
 		insertData();
-		ArrayList <FailureTrace> failureTraces = new ArrayList <>();
+		ArrayList <FailureTraceEntity> failureTraces = new ArrayList <>();
 		Collection <?> failureTraceCollection = failureTraceService.getAllFailureTraces();
 		System.out.println("SIZE OF COLL : " + failureTraceCollection.size());
 		for (Object f : failureTraceCollection) {
-			failureTraces.add((FailureTrace) f);
+			failureTraces.add((FailureTraceEntity) f);
 		};
-		FailureTrace loadedFT = null;
-		for (FailureTrace f : failureTraces) {
+		FailureTraceEntity loadedFT = null;
+		for (FailureTraceEntity f : failureTraces) {
 			System.out.println("ID COMPARISON: " + f.getIMSI() + " = " + id);
 			if (f.getIMSI().equals(INITIAL_IMSI)) {
 				loadedFT = f;
@@ -179,7 +179,7 @@ public class FailureTraceTest {
 		assertEquals("Failed to insert", INITIAL_IMSI, loadedFT.getIMSI());
 		assertEquals("Failed to insert", INITIAL_NE_VERSION, loadedFT.getNeVersion());
 
-		FailureTrace updatedFT = new FailureTrace();
+		FailureTraceEntity updatedFT = new FailureTraceEntity();
 		updatedFT.setFailureTraceId(1L);
 		updatedFT.setCellId(UPDATED_CELL_ID);
 		updatedFT.setDateTime(UPDATED_DATE);

@@ -19,8 +19,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureClassData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -39,17 +39,17 @@ public class FailureClassTest {
 	public void basicCRUDTest() throws Exception {
 		int id = 0;
 
-		FailureClass createdFC = new FailureClass(id, INITIAL_DESCRIPTION);
+		FailureClassEntity createdFC = new FailureClassEntity(id, INITIAL_DESCRIPTION);
 		failureClassService.addFailureClass(createdFC);
 
-		ArrayList <FailureClass> failureClasses = new ArrayList <>();
+		ArrayList <FailureClassEntity> failureClasses = new ArrayList <>();
 		Collection <?> failureClassesCollection = failureClassService.getFailureClasses();
 
 		for (Object e : failureClassesCollection) {
-			failureClasses.add((FailureClass) e);
+			failureClasses.add((FailureClassEntity) e);
 		};
-		FailureClass loadedFC = null;
-		for (FailureClass f : failureClasses) {
+		FailureClassEntity loadedFC = null;
+		for (FailureClassEntity f : failureClasses) {
 			if (f.getFailureClass().equals(id)) {
 				loadedFC = f;
 				break;
@@ -61,15 +61,15 @@ public class FailureClassTest {
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)
 	public void testEquality(){
-		FailureClass failureClass = new FailureClass(1, "description");
-		FailureClass otherFailureClass = new FailureClass(2, "other description");
+		FailureClassEntity failureClass = new FailureClassEntity(1, "description");
+		FailureClassEntity otherFailureClass = new FailureClassEntity(2, "other description");
 		
-		assertTrue(failureClass.equals(new FailureClass(1, "other failure class")));
+		assertTrue(failureClass.equals(new FailureClassEntity(1, "other failure class")));
 		assertFalse(failureClass.equals(null));
 		assertFalse(failureClass.equals(new Integer(0)));
-		assertFalse(failureClass.equals(new EventCauseCK(0, 1)));
-		assertFalse((new FailureClass()).equals(failureClass));
+		assertFalse(failureClass.equals(new EventCauseEntityCK(0, 1)));
+		assertFalse((new FailureClassEntity()).equals(failureClass));
 		assertFalse(failureClass.equals(otherFailureClass));
-		assertTrue(failureClass.hashCode() == (new FailureClass(1, "other failure class").hashCode()));
+		assertTrue(failureClass.hashCode() == (new FailureClassEntity(1, "other failure class").hashCode()));
 	}
 }

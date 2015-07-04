@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryDAO;
 
 @RunWith(Arquillian.class)
@@ -42,7 +42,7 @@ public class JPACountryDAOTest {
 	
 	@Test
 	public void testInsertion(){
-		Country c = new Country(12, "Japan");
+		CountryEntity c = new CountryEntity(12, "Japan");
 		countryDAO.insertCountry(c);
 		assertNotNull(countryDAO.getAllCountries());
 		assertTrue(countryDAO.getAllCountries().size() == 1);
@@ -50,8 +50,8 @@ public class JPACountryDAOTest {
 	
 	@Test
 	public void testGetAllCountries(){
-		Country c = new Country(12, "Japan");
-		Country c2 = new Country(21, "Kenya");
+		CountryEntity c = new CountryEntity(12, "Japan");
+		CountryEntity c2 = new CountryEntity(21, "Kenya");
 		countryDAO.insertCountry(c);
 		countryDAO.insertCountry(c2);
 		assertTrue(countryDAO.getAllCountries().size() == 2);

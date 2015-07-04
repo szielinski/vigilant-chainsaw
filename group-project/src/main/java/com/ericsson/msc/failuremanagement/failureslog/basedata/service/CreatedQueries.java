@@ -16,8 +16,8 @@ import javax.ws.rs.core.Response;
 import org.json.simple.JSONObject;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
 import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
 
 @Path("/query")
@@ -211,7 +211,7 @@ public class CreatedQueries {
 
 	@GET
 	@Path("/getAllFailureTraces")
-	public Collection <FailureTrace> getAllFailureTraces() {
+	public Collection <FailureTraceEntity> getAllFailureTraces() {
 		return failureTraceEJB.getAllFailureTraces();
 	}
 
@@ -232,7 +232,7 @@ public class CreatedQueries {
 	@GET
 	@Path("/getAllFailureClasses")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Collection <FailureClass> getAllFailureClasses() {
+	public Collection <FailureClassEntity> getAllFailureClasses() {
 		return failureTraceEJB.getAllFailureClasses();
 	}
 }

@@ -2,7 +2,7 @@ package com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao;
 
 import java.util.Collection;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
 
 /**
  * A Data Access Object interface for the Country entity. Defines common DAO
@@ -17,7 +17,7 @@ public interface CountryDAO {
 	 * @return a Collection of Country objects; empty collection if no Country
 	 *         objects are present in the data store.
 	 */
-	public Collection <Country> getAllCountries();
+	public Collection <CountryEntity> getAllCountries();
 
-	public void insertCountry(Country testCountry);
+	public void insertCountry(CountryEntity testCountry);
 }

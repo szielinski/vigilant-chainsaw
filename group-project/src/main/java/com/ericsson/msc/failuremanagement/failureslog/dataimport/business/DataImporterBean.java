@@ -22,14 +22,14 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntittyCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryCodeNetworkCodeDAO;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryDAO;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.EventCauseDAO;
@@ -64,11 +64,11 @@ public class DataImporterBean implements DataImporter {
 	@Inject
 	private ValidatorBean validatorService;
 
-	private HashMap <Integer, EventCause> eventCauseHashMap = new HashMap <>();
-	private HashMap <Integer, FailureClass> failureClassHashMap = new HashMap <>();
-	private HashMap <Integer, UserEquipment> userEquipmentHashMap = new HashMap <>();
-	private HashMap <Integer, CountryCodeNetworkCode> countryCodeNetworkCodeHashMap = new HashMap <>();
-	private HashMap <Integer, Country> countryHashMap = new HashMap <>();
+	private HashMap <Integer, EventCauseEntity> eventCauseHashMap = new HashMap <>();
+	private HashMap <Integer, FailureClassEntity> failureClassHashMap = new HashMap <>();
+	private HashMap <Integer, UserEquipmentEntity> userEquipmentHashMap = new HashMap <>();
+	private HashMap <Integer, CountryCodeNetworkCodeEntity> countryCodeNetworkCodeHashMap = new HashMap <>();
+	private HashMap <Integer, CountryEntity> countryHashMap = new HashMap <>();
 	public static long duration = 0;
 	private int validRowsAdded = 0;
 	private int invalidRowsRejected = 0;
@@ -92,24 +92,24 @@ public class DataImporterBean implements DataImporter {
 		validRowsAdded = 0;
 		invalidRowsRejected = 0;
 		errorLogWriterService.startNewFile();
-		Collection <EventCause> existingEventCauseCollection = eventCauseDAO.getAllEventCauses();
-		for (EventCause evCa : existingEventCauseCollection) {
+		Collection <EventCauseEntity> existingEventCauseCollection = eventCauseDAO.getAllEventCauses();
+		for (EventCauseEntity evCa : existingEventCauseCollection) {
 			eventCauseHashMap.put(evCa.getCauseCodeEventIdCK().hashCode(), evCa);
 		}
-		Collection <FailureClass> existingFailureClassCollection = failureClassDAO.getAllFailureClasses();
-		for (FailureClass fail : existingFailureClassCollection) {
+		Collection <FailureClassEntity> existingFailureClassCollection = failureClassDAO.getAllFailureClasses();
+		for (FailureClassEntity fail : existingFailureClassCollection) {
 			failureClassHashMap.put(fail.getFailureClass(), fail);
 		}
-		Collection <UserEquipment> existingUserEquipmentCollection = userEquipmentDAO.getAllUserEquipment();
-		for (UserEquipment ue : existingUserEquipmentCollection) {
+		Collection <UserEquipmentEntity> existingUserEquipmentCollection = userEquipmentDAO.getAllUserEquipment();
+		for (UserEquipmentEntity ue : existingUserEquipmentCollection) {
 			userEquipmentHashMap.put(ue.getTypeAllocationCode(), ue);
 		}
-		Collection <CountryCodeNetworkCode> existingCountryCodeNetworkCodeCollection = countryCodeNetworkCodeDAO.getAllCountryCodeNetworkCodes();
-		for (CountryCodeNetworkCode cn : existingCountryCodeNetworkCodeCollection) {
+		Collection <CountryCodeNetworkCodeEntity> existingCountryCodeNetworkCodeCollection = countryCodeNetworkCodeDAO.getAllCountryCodeNetworkCodes();
+		for (CountryCodeNetworkCodeEntity cn : existingCountryCodeNetworkCodeCollection) {
 			countryCodeNetworkCodeHashMap.put(cn.getCountryCodeNetworkCode().hashCode(), cn);
 		}
-		Collection <Country> existingCountryCollection = countryDAO.getAllCountries();
-		for (Country c : existingCountryCollection) {
+		Collection <CountryEntity> existingCountryCollection = countryDAO.getAllCountries();
+		for (CountryEntity c : existingCountryCollection) {
 			countryHashMap.put(c.getCountryCode(), c);
 		}
 		long start = System.currentTimeMillis();
@@ -131,7 +131,7 @@ public class DataImporterBean implements DataImporter {
 
 	private void readBaseDataSheet(Workbook excelWorkbook) {
 		HSSFSheet baseDataWorksheet = (HSSFSheet) excelWorkbook.getSheetAt(ExcelDataSheet.BASE_DATA_TABLE.getPageNumber());
-		Collection <FailureTrace> failureTraceCollectionToFlush = new ArrayList <FailureTrace>();
+		Collection <FailureTraceEntity> failureTraceCollectionToFlush = new ArrayList <FailureTraceEntity>();
 		int numRows = baseDataWorksheet.getLastRowNum();
 		Long initialPKValue = failureTraceDAO.getTotalNumberOfEntries() + 1;
 		for (int i = 1; i <= numRows; i++) {
@@ -156,28 +156,28 @@ public class DataImporterBean implements DataImporter {
 			String hier32 = Long.toString((long) row.getCell(12).getNumericCellValue());
 			String hier321 = Long.toString((long) row.getCell(13).getNumericCellValue());
 
-			EventCause existingEventCause = null;
-			if (eventCauseHashMap.containsKey(new EventCauseCK(causeCode, eventId).hashCode())) {
-				existingEventCause = eventCauseHashMap.get(new EventCauseCK(causeCode, eventId).hashCode());
+			EventCauseEntity existingEventCause = null;
+			if (eventCauseHashMap.containsKey(new EventCauseEntityCK(causeCode, eventId).hashCode())) {
+				existingEventCause = eventCauseHashMap.get(new EventCauseEntityCK(causeCode, eventId).hashCode());
 			}
-			CountryCodeNetworkCode existingCountryCodeNetworkCode = null;
-			Country existingCountry = null;
+			CountryCodeNetworkCodeEntity existingCountryCodeNetworkCode = null;
+			CountryEntity existingCountry = null;
 			if (countryHashMap.containsKey(countryCode)) {
 				existingCountry = countryHashMap.get(countryCode);
-				if (countryCodeNetworkCodeHashMap.containsKey(new CountryCodeNetworkCodeCK(existingCountry, networkCode).hashCode())) {
-					existingCountryCodeNetworkCode = countryCodeNetworkCodeHashMap.get(new CountryCodeNetworkCodeCK(existingCountry, networkCode).hashCode());
+				if (countryCodeNetworkCodeHashMap.containsKey(new CountryCodeNetworkCodeEntittyCK(existingCountry, networkCode).hashCode())) {
+					existingCountryCodeNetworkCode = countryCodeNetworkCodeHashMap.get(new CountryCodeNetworkCodeEntittyCK(existingCountry, networkCode).hashCode());
 				}
 			}
-			FailureClass existingFailureClass = null;
+			FailureClassEntity existingFailureClass = null;
 			if (failureClassHashMap.containsKey(failureClass)) {
 				existingFailureClass = failureClassHashMap.get(failureClass);
 			}
-			UserEquipment existingUserEquipment = null;
+			UserEquipmentEntity existingUserEquipment = null;
 			if (userEquipmentHashMap.containsKey(ueType)) {
 				existingUserEquipment = userEquipmentHashMap.get(ueType);
 			}
 
-			FailureTrace createdFailureTrace = new FailureTrace();
+			FailureTraceEntity createdFailureTrace = new FailureTraceEntity();
 			createdFailureTrace.setFailureTraceId(initialPKValue);
 			createdFailureTrace.setDateTime(dateTime);
 			createdFailureTrace.setCountryCodeNetworkCode(existingCountryCodeNetworkCode);
@@ -203,16 +203,16 @@ public class DataImporterBean implements DataImporter {
 		HSSFSheet eventCauseWorksheet = (HSSFSheet) excelWorkbook.getSheetAt(ExcelDataSheet.EVENT_CAUSE_TABLE.getPageNumber());
 		int numRows = eventCauseWorksheet.getLastRowNum();
 		HSSFRow row;
-		EventCauseCK managedEventCauseCK;
-		EventCause managedEventCause;
-		Collection <EventCause> eventCauseCollection = new ArrayList <EventCause>();
+		EventCauseEntityCK managedEventCauseCK;
+		EventCauseEntity managedEventCause;
+		Collection <EventCauseEntity> eventCauseCollection = new ArrayList <EventCauseEntity>();
 		for (int i = 1; i <= numRows; i++) {
 			row = (HSSFRow) eventCauseWorksheet.getRow(i);
 			int causeCode = (int) row.getCell(0).getNumericCellValue();
 			int eventId = (int) row.getCell(1).getNumericCellValue();
 			String description = row.getCell(2).getStringCellValue();
-			managedEventCauseCK = new EventCauseCK(causeCode, eventId);
-			managedEventCause = new EventCause((managedEventCauseCK), description);
+			managedEventCauseCK = new EventCauseEntityCK(causeCode, eventId);
+			managedEventCause = new EventCauseEntity((managedEventCauseCK), description);
 
 			if (eventCauseHashMap.get(managedEventCauseCK.hashCode()) != null) {
 				continue;
@@ -227,8 +227,8 @@ public class DataImporterBean implements DataImporter {
 		HSSFSheet failureClassWorksheet = (HSSFSheet) excelWorkbook.getSheetAt(ExcelDataSheet.FAILURE_CLASS_TABLE.getPageNumber());
 		int numRows = failureClassWorksheet.getLastRowNum();
 		HSSFRow row;
-		FailureClass managedFailureClass;
-		Collection <FailureClass> failureClassCollection = new ArrayList <FailureClass>();
+		FailureClassEntity managedFailureClass;
+		Collection <FailureClassEntity> failureClassCollection = new ArrayList <FailureClassEntity>();
 		for (int i = 1; i <= numRows; i++) {
 			row = failureClassWorksheet.getRow(i);
 			int failureClassId = (int) row.getCell(0).getNumericCellValue();
@@ -238,7 +238,7 @@ public class DataImporterBean implements DataImporter {
 				continue;
 			}
 
-			managedFailureClass = new FailureClass(failureClassId, description);
+			managedFailureClass = new FailureClassEntity(failureClassId, description);
 
 			failureClassCollection.add(managedFailureClass);
 			failureClassHashMap.put((Integer) failureClassId, managedFailureClass);
@@ -251,8 +251,8 @@ public class DataImporterBean implements DataImporter {
 
 		int numRows = userEquipmentWorksheet.getLastRowNum();
 		HSSFRow row;
-		UserEquipment managedUserEquipment;
-		Collection <UserEquipment> userEquipmentCollection = new ArrayList <UserEquipment>();
+		UserEquipmentEntity managedUserEquipment;
+		Collection <UserEquipmentEntity> userEquipmentCollection = new ArrayList <UserEquipmentEntity>();
 		for (int i = 1; i <= numRows; i++) {
 			row = (HSSFRow) userEquipmentWorksheet.getRow(i);
 
@@ -282,7 +282,7 @@ public class DataImporterBean implements DataImporter {
 				continue;
 			}
 
-			managedUserEquipment = new UserEquipment(typeAllocationCode, marketName, manufacturer, accessCapability, model, vendor, ueType, os, inputMode);
+			managedUserEquipment = new UserEquipmentEntity(typeAllocationCode, marketName, manufacturer, accessCapability, model, vendor, ueType, os, inputMode);
 			userEquipmentCollection.add(managedUserEquipment);
 			userEquipmentHashMap.put((Integer) typeAllocationCode, managedUserEquipment);
 		}
@@ -294,10 +294,10 @@ public class DataImporterBean implements DataImporter {
 		// NEW IMPLEMENTATION
 		int numRows = operatorWorksheet.getLastRowNum();
 		HSSFRow row;
-		Country managedCountry;
-		CountryCodeNetworkCodeCK managedCountryCodeNetworkCodeCK;
-		CountryCodeNetworkCode managedCountryCodeNetworkCode;
-		Collection <CountryCodeNetworkCode> countryCodeNetworkCodeCollection = new ArrayList <CountryCodeNetworkCode>();
+		CountryEntity managedCountry;
+		CountryCodeNetworkCodeEntittyCK managedCountryCodeNetworkCodeCK;
+		CountryCodeNetworkCodeEntity managedCountryCodeNetworkCode;
+		Collection <CountryCodeNetworkCodeEntity> countryCodeNetworkCodeCollection = new ArrayList <CountryCodeNetworkCodeEntity>();
 		for (int i = 1; i <= numRows; i++) {
 			row = (HSSFRow) operatorWorksheet.getRow(i);
 			int countryCode = (int) row.getCell(0).getNumericCellValue();
@@ -309,17 +309,17 @@ public class DataImporterBean implements DataImporter {
 				managedCountry = countryHashMap.get((Integer) countryCode);
 			}
 			else {
-				managedCountry = new Country(countryCode, country);
+				managedCountry = new CountryEntity(countryCode, country);
 				countryHashMap.put(countryCode, managedCountry);
 			}
 
-			managedCountryCodeNetworkCodeCK = new CountryCodeNetworkCodeCK(managedCountry, networkCode);
+			managedCountryCodeNetworkCodeCK = new CountryCodeNetworkCodeEntittyCK(managedCountry, networkCode);
 
 			if (countryCodeNetworkCodeHashMap.get(managedCountryCodeNetworkCodeCK.hashCode()) != null) {
 				continue;
 			}
 
-			managedCountryCodeNetworkCode = new CountryCodeNetworkCode(managedCountryCodeNetworkCodeCK, operator);
+			managedCountryCodeNetworkCode = new CountryCodeNetworkCodeEntity(managedCountryCodeNetworkCodeCK, operator);
 
 			countryCodeNetworkCodeCollection.add(managedCountryCodeNetworkCode);
 

@@ -16,9 +16,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntittyCK;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryCodeNetworkCodeDAO;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryDAO;
 
@@ -47,9 +47,9 @@ public class JPACountryCodeNetworkCodeDAOTest {
 	
 	@Test
 	public void testInsertion(){	
-		Country country = new Country(1, "country");
-		CountryCodeNetworkCodeCK ck = new CountryCodeNetworkCodeCK(country, 1);
-		CountryCodeNetworkCode ccncck = new CountryCodeNetworkCode(ck, "one");
+		CountryEntity country = new CountryEntity(1, "country");
+		CountryCodeNetworkCodeEntittyCK ck = new CountryCodeNetworkCodeEntittyCK(country, 1);
+		CountryCodeNetworkCodeEntity ccncck = new CountryCodeNetworkCodeEntity(ck, "one");
 		countryDAO.insertCountryCodeNetworkCode(ccncck);
 		assertNotNull(countryDAO.getAllCountryCodeNetworkCodes());
 		assertTrue(countryDAO.getAllCountryCodeNetworkCodes().size() == 1);
@@ -58,13 +58,13 @@ public class JPACountryCodeNetworkCodeDAOTest {
 	
 	@Test
 	public void testGetAllCountryCodeNetworkCodes(){
-		Country country = new Country(1, "country");
-		CountryCodeNetworkCodeCK ck = new CountryCodeNetworkCodeCK(country, 1);
-		CountryCodeNetworkCode ccncck = new CountryCodeNetworkCode(ck, "one");
+		CountryEntity country = new CountryEntity(1, "country");
+		CountryCodeNetworkCodeEntittyCK ck = new CountryCodeNetworkCodeEntittyCK(country, 1);
+		CountryCodeNetworkCodeEntity ccncck = new CountryCodeNetworkCodeEntity(ck, "one");
 
-		Country countryTwo = new Country(2, "countryTwo");
-		CountryCodeNetworkCodeCK ckTwo = new CountryCodeNetworkCodeCK(countryTwo, 2);
-		CountryCodeNetworkCode ccncckTwo = new CountryCodeNetworkCode(ckTwo, "two");
+		CountryEntity countryTwo = new CountryEntity(2, "countryTwo");
+		CountryCodeNetworkCodeEntittyCK ckTwo = new CountryCodeNetworkCodeEntittyCK(countryTwo, 2);
+		CountryCodeNetworkCodeEntity ccncckTwo = new CountryCodeNetworkCodeEntity(ckTwo, "two");
 
 		countryDAO.insertCountryCodeNetworkCode(ccncck);
 		countryDAO.insertCountryCodeNetworkCode(ccncckTwo);
@@ -75,9 +75,9 @@ public class JPACountryCodeNetworkCodeDAOTest {
 	
 	@Test 
 	public void testGetCountryCodeNetworkCode(){
-		Country country = new Country(1, "country");
-		CountryCodeNetworkCodeCK ck = new CountryCodeNetworkCodeCK(country, 1);
-		CountryCodeNetworkCode ccncck = new CountryCodeNetworkCode(ck, "one");
+		CountryEntity country = new CountryEntity(1, "country");
+		CountryCodeNetworkCodeEntittyCK ck = new CountryCodeNetworkCodeEntittyCK(country, 1);
+		CountryCodeNetworkCodeEntity ccncck = new CountryCodeNetworkCodeEntity(ck, "one");
 		countryDAO.insertCountryCodeNetworkCode(ccncck);
 		assertNotNull(countryDAO.getCountryCodeNetworkCode(1, 1));
 		assertTrue(countryDAO.getAllCountryCodeNetworkCodes().size() == 1);
@@ -85,19 +85,19 @@ public class JPACountryCodeNetworkCodeDAOTest {
 	
 	@Test
 	public void testBatchInsertCountryCodeNetworkCode(){
-		Country country = new Country(1, "country");
-		CountryCodeNetworkCodeCK ck = new CountryCodeNetworkCodeCK(country, 1);
-		CountryCodeNetworkCode ccncck = new CountryCodeNetworkCode(ck, "one");
+		CountryEntity country = new CountryEntity(1, "country");
+		CountryCodeNetworkCodeEntittyCK ck = new CountryCodeNetworkCodeEntittyCK(country, 1);
+		CountryCodeNetworkCodeEntity ccncck = new CountryCodeNetworkCodeEntity(ck, "one");
 
-		Country countryTwo = new Country(2, "countryTwo");
-		CountryCodeNetworkCodeCK ckTwo = new CountryCodeNetworkCodeCK(countryTwo, 2);
-		CountryCodeNetworkCode ccncckTwo = new CountryCodeNetworkCode(ckTwo, "two");
+		CountryEntity countryTwo = new CountryEntity(2, "countryTwo");
+		CountryCodeNetworkCodeEntittyCK ckTwo = new CountryCodeNetworkCodeEntittyCK(countryTwo, 2);
+		CountryCodeNetworkCodeEntity ccncckTwo = new CountryCodeNetworkCodeEntity(ckTwo, "two");
 
-		Country countryThree = new Country(3, "countryThree");
-		CountryCodeNetworkCodeCK ckThree = new CountryCodeNetworkCodeCK(countryThree, 3);
-		CountryCodeNetworkCode ccncckThree = new CountryCodeNetworkCode(ckThree, "Three");
+		CountryEntity countryThree = new CountryEntity(3, "countryThree");
+		CountryCodeNetworkCodeEntittyCK ckThree = new CountryCodeNetworkCodeEntittyCK(countryThree, 3);
+		CountryCodeNetworkCodeEntity ccncckThree = new CountryCodeNetworkCodeEntity(ckThree, "Three");
 
-		Collection <CountryCodeNetworkCode> ccncArray = new ArrayList<>();
+		Collection <CountryCodeNetworkCodeEntity> ccncArray = new ArrayList<>();
 		ccncArray.add(ccncck);
 		ccncArray.add(ccncckTwo);
 		ccncArray.add(ccncckThree);

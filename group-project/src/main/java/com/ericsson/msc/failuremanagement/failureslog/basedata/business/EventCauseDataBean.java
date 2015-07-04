@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.EventCauseDAO;
 
 @Stateless
@@ -21,17 +21,17 @@ public class EventCauseDataBean implements EventCauseData {
 	private EventCauseDAO dao;
 
 	@Override
-	public Collection <EventCause> getCauseCode() {
+	public Collection <EventCauseEntity> getCauseCode() {
 		return dao.getAllEventCauses();
 	}
 
 	@Override
-	public void addEventCauses(Collection <EventCause> eventCauses) {
+	public void addEventCauses(Collection <EventCauseEntity> eventCauses) {
 		dao.batchInsertEventCause(eventCauses);
 	}
 
 	@Override
-	public void addEventCause(EventCause eventCause) {
+	public void addEventCause(EventCauseEntity eventCause) {
 		dao.insertEventCause(eventCause);
 	}
 

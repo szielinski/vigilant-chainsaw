@@ -12,8 +12,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "user")
-@NamedQueries({@NamedQuery(name = "findUserByUsername", query = "SELECT u FROM User u WHERE u.username = :username")})
-public class User {
+@NamedQueries({@NamedQuery(name = "findUserByUsername", query = "SELECT u FROM UserEntity u WHERE u.username = :username")})
+public class UserEntity {
 
 	@Id
 	@Column(length = 32)
@@ -26,10 +26,10 @@ public class User {
 	/**
 	 * No-args constructor used by the JPA.
 	 */
-	public User() {
+	public UserEntity() {
 	}
 
-	public User(String username, String password, String role) {
+	public UserEntity(String username, String password, String role) {
 		this.username = username;
 		this.password = password;
 		this.role = role;

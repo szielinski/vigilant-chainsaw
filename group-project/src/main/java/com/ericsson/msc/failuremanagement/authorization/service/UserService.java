@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 import com.ericsson.msc.failuremanagement.authorization.business.UserData;
-import com.ericsson.msc.failuremanagement.authorization.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 
 @Path("/")
 public class UserService {
@@ -24,7 +24,7 @@ public class UserService {
 	@Path("/add/user")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addUser(User user) {
+	public Response addUser(UserEntity user) {
 		if (userServiceEJB.addUser(user.getUsername(), user.getPassword(), user.getRole())) {
 			return Response.ok(user).build();
 		}

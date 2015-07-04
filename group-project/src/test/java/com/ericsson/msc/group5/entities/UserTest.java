@@ -18,14 +18,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.authorization.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 
 @RunWith(Arquillian.class)
 public class UserTest {
 
 	@Deployment
 	public static Archive <?> createDeployment() {
-		return ShrinkWrap.create(WebArchive.class, "test.war").addPackage(User.class.getPackage())
+		return ShrinkWrap.create(WebArchive.class, "test.war").addPackage(UserEntity.class.getPackage())
 				.addAsResource("test-persistence.xml", "META-INF/persistence.xml").addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
 	}
 
@@ -59,7 +59,7 @@ public class UserTest {
 		utx.begin();
 		em.joinTransaction();
 
-		User user = new User(INITIAL_USERNAME, INITIAL_PASSWORD, INITIAL_ROLE);
+		UserEntity user = new UserEntity(INITIAL_USERNAME, INITIAL_PASSWORD, INITIAL_ROLE);
 		em.persist(user);
 		
 		utx.commit();
@@ -68,7 +68,7 @@ public class UserTest {
 
 	@Test
 	public void basicCRUDTest() throws Exception {
-		User loadedUser = em.find(User.class, INITIAL_USERNAME);
+		UserEntity loadedUser = em.find(UserEntity.class, INITIAL_USERNAME);
 		assertEquals("Failed to insert", INITIAL_USERNAME, loadedUser.getUsername());
 		assertEquals("Failed to update", INITIAL_PASSWORD, loadedUser.getPassword());
 		assertEquals("Failed to update", INITIAL_ROLE, loadedUser.getRole());
@@ -77,14 +77,14 @@ public class UserTest {
 		loadedUser.setRole(UPDATED_ROLE);
 		em.merge(loadedUser);
 		
-		User updatedUser = em.find(User.class, INITIAL_USERNAME);
+		UserEntity updatedUser = em.find(UserEntity.class, INITIAL_USERNAME);
 //		assertTrue("Failed to match", loadedUser.hashCode() == updatedUser.hashCode());
 		assertTrue("Failed to match", loadedUser.equals(updatedUser));
 		assertEquals("Failed to update", UPDATED_PASSWORD, updatedUser.getPassword());
 		assertEquals("Failed to update", UPDATED_ROLE, updatedUser.getRole());
 
 		em.remove(updatedUser);
-		User shouldBeNull = em.find(User.class, INITIAL_USERNAME);
+		UserEntity shouldBeNull = em.find(UserEntity.class, INITIAL_USERNAME);
 		assertNull("Failed to delete", shouldBeNull);
 	}
 

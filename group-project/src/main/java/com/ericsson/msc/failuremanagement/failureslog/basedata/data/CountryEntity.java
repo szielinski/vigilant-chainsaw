@@ -13,8 +13,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "country")
-@NamedQueries({@NamedQuery(name = "findAllCountries", query = "SELECT c FROM Country c")})
-public class Country implements Serializable{
+@NamedQueries({@NamedQuery(name = "findAllCountries", query = "SELECT c FROM CountryEntity c")})
+public class CountryEntity implements Serializable{
 
 	private static final long serialVersionUID = 529321768960748141L;
 	
@@ -27,7 +27,7 @@ public class Country implements Serializable{
 	/**
 	 * No-args constructor used by the JPA.
 	 */
-	public Country() {
+	public CountryEntity() {
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class Country implements Serializable{
 	 * @param country
 	 *            Name of the country as a String.
 	 */
-	public Country(Integer countryCode, String country) {
+	public CountryEntity(Integer countryCode, String country) {
 		this.countryCode = countryCode;
 		this.country = country;
 	}
@@ -75,7 +75,7 @@ public class Country implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Country other = (Country) obj;
+		CountryEntity other = (CountryEntity) obj;
 		if (countryCode == null) {
 			if (other.countryCode != null)
 				return false;

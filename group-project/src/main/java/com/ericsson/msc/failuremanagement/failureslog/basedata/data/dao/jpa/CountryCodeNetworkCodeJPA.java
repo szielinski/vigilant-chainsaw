@@ -4,9 +4,9 @@ import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCode;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntittyCK;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryCodeNetworkCodeDAO;
 
 public class CountryCodeNetworkCodeJPA implements CountryCodeNetworkCodeDAO {
@@ -15,30 +15,30 @@ public class CountryCodeNetworkCodeJPA implements CountryCodeNetworkCodeDAO {
 	private EntityManager em;
 
 	@Override
-	public Collection <CountryCodeNetworkCode> getAllCountryCodeNetworkCodes() {
+	public Collection <CountryCodeNetworkCodeEntity> getAllCountryCodeNetworkCodes() {
 		return em.createNamedQuery("findAllCountryCodeNetworkCodes").getResultList();
 	}
 
 	@Override
-	public CountryCodeNetworkCode getCountryCodeNetworkCode(int networkCode, int countryCode) {
-		Country country = new Country();
+	public CountryCodeNetworkCodeEntity getCountryCodeNetworkCode(int networkCode, int countryCode) {
+		CountryEntity country = new CountryEntity();
 		country.setCountryCode(countryCode);
-		return em.find(CountryCodeNetworkCode.class, new CountryCodeNetworkCodeCK(country, networkCode));
+		return em.find(CountryCodeNetworkCodeEntity.class, new CountryCodeNetworkCodeEntittyCK(country, networkCode));
 	}
 
 	@Override
-	public void insertCountryCodeNetworkCode(CountryCodeNetworkCode countryCodeNetworkCode) {
-		Country country = countryCodeNetworkCode.getCountryCodeNetworkCode().getCountry();
-		if (em.find(Country.class, country.getCountryCode()) == null)
+	public void insertCountryCodeNetworkCode(CountryCodeNetworkCodeEntity countryCodeNetworkCode) {
+		CountryEntity country = countryCodeNetworkCode.getCountryCodeNetworkCode().getCountry();
+		if (em.find(CountryEntity.class, country.getCountryCode()) == null)
 			em.persist(country);
 		em.persist(countryCodeNetworkCode);
 	}
 
 	@Override
-	public void batchInsertCountryCodeNetworkCode(Collection <CountryCodeNetworkCode> countryCodeNetworkCodeList) {
-		for (CountryCodeNetworkCode countryCodeNetworkCode : countryCodeNetworkCodeList) {
-			Country country = countryCodeNetworkCode.getCountryCodeNetworkCode().getCountry();
-			if (em.find(Country.class, country.getCountryCode()) == null)
+	public void batchInsertCountryCodeNetworkCode(Collection <CountryCodeNetworkCodeEntity> countryCodeNetworkCodeList) {
+		for (CountryCodeNetworkCodeEntity countryCodeNetworkCode : countryCodeNetworkCodeList) {
+			CountryEntity country = countryCodeNetworkCode.getCountryCodeNetworkCode().getCountry();
+			if (em.find(CountryEntity.class, country.getCountryCode()) == null)
 				em.persist(country);
 			em.persist(countryCodeNetworkCode);
 		}

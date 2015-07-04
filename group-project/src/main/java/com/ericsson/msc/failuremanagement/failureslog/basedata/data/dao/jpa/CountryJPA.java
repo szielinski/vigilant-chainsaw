@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.Country;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.CountryDAO;
 
 @Local
@@ -17,12 +17,12 @@ public class CountryJPA implements CountryDAO {
 	private EntityManager em;
 
 	@Override
-	public Collection <Country> getAllCountries() {
+	public Collection <CountryEntity> getAllCountries() {
 		return em.createNamedQuery("findAllCountries").getResultList();
 	}
 
 	@Override
-	public void insertCountry(Country country) {
+	public void insertCountry(CountryEntity country) {
 		em.persist(country);
 	}
 

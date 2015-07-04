@@ -17,8 +17,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.EventCauseDAO;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 
@@ -50,8 +50,8 @@ public class JPAEventCauseDAOTest {
 	
 	@Test
 	public void insertEventCauseTest(){
-		EventCauseCK ck = new EventCauseCK(123, 546);
-		EventCause ec = new EventCause(ck, "desc");
+		EventCauseEntityCK ck = new EventCauseEntityCK(123, 546);
+		EventCauseEntity ec = new EventCauseEntity(ck, "desc");
 		eventCauseDAO.insertEventCause(ec);
 		assertNotNull(eventCauseDAO.getAllEventCauses());
 		assertTrue(eventCauseDAO.getAllEventCauses().size() == 1);
@@ -59,12 +59,12 @@ public class JPAEventCauseDAOTest {
 	
 	@Test
 	public void batchInsertEventCauseTest(){
-		EventCauseCK ck = new EventCauseCK(123, 546);
-		EventCause ec = new EventCause(ck, "desc");
-		EventCauseCK ckk = new EventCauseCK(654, 321);;
-		EventCause ecc = new EventCause(ckk, " desc");;
+		EventCauseEntityCK ck = new EventCauseEntityCK(123, 546);
+		EventCauseEntity ec = new EventCauseEntity(ck, "desc");
+		EventCauseEntityCK ckk = new EventCauseEntityCK(654, 321);;
+		EventCauseEntity ecc = new EventCauseEntity(ckk, " desc");;
 		
-		ArrayList<EventCause> list = new ArrayList<EventCause>();
+		ArrayList<EventCauseEntity> list = new ArrayList<EventCauseEntity>();
 		list.add(ec);
 		list.add(ecc);
 		
@@ -75,12 +75,12 @@ public class JPAEventCauseDAOTest {
 	
 	@Test
 	public void getEventCauseTest(){
-		EventCauseCK ck = new EventCauseCK(123, 546);
-		EventCause ec = new EventCause(ck, "desc");
-		EventCauseCK ckk = new EventCauseCK(654, 321);;
-		EventCause ecc = new EventCause(ckk, " not");;
+		EventCauseEntityCK ck = new EventCauseEntityCK(123, 546);
+		EventCauseEntity ec = new EventCauseEntity(ck, "desc");
+		EventCauseEntityCK ckk = new EventCauseEntityCK(654, 321);;
+		EventCauseEntity ecc = new EventCauseEntity(ckk, " not");;
 		
-		ArrayList<EventCause> list = new ArrayList<EventCause>();
+		ArrayList<EventCauseEntity> list = new ArrayList<EventCauseEntity>();
 		list.add(ec);
 		list.add(ecc);
 		
@@ -91,12 +91,12 @@ public class JPAEventCauseDAOTest {
 	
 	@Test
 	public void getAllEventCausesTest(){
-		EventCauseCK ck = new EventCauseCK(123, 546);
-		EventCause ec = new EventCause(ck, "desc");
-		EventCauseCK ckk = new EventCauseCK(654, 321);;
-		EventCause ecc = new EventCause(ckk, " not");;
+		EventCauseEntityCK ck = new EventCauseEntityCK(123, 546);
+		EventCauseEntity ec = new EventCauseEntity(ck, "desc");
+		EventCauseEntityCK ckk = new EventCauseEntityCK(654, 321);;
+		EventCauseEntity ecc = new EventCauseEntity(ckk, " not");;
 		
-		ArrayList<EventCause> list = new ArrayList<EventCause>();
+		ArrayList<EventCauseEntity> list = new ArrayList<EventCauseEntity>();
 		list.add(ec);
 		list.add(ecc);
 		

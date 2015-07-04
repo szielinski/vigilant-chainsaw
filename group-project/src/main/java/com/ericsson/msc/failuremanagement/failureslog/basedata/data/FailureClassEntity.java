@@ -14,8 +14,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "failure_class")
-@NamedQueries({@NamedQuery(name = "findAllFailureClasses", query = "SELECT f FROM FailureClass f")})
-public class FailureClass {
+@NamedQueries({@NamedQuery(name = "findAllFailureClasses", query = "SELECT f FROM FailureClassEntity f")})
+public class FailureClassEntity {
 
 	@Id
 	@Column(name = "failure_class")
@@ -23,13 +23,13 @@ public class FailureClass {
 	@Column(length = 100)
 	private String description;
 
-	@OneToMany(mappedBy = "failureClass", targetEntity = FailureTrace.class)
-	private Collection <FailureTrace> failureTrace;
+	@OneToMany(mappedBy = "failureClass", targetEntity = FailureTraceEntity.class)
+	private Collection <FailureTraceEntity> failureTrace;
 
 	/**
 	 * No-args constructor used by the JPA.
 	 */
-	public FailureClass() {
+	public FailureClassEntity() {
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class FailureClass {
 	 * @param description
 	 *            String description of the failure class.
 	 */
-	public FailureClass(Integer failureClass, String description) {
+	public FailureClassEntity(Integer failureClass, String description) {
 		this.failureClass = failureClass;
 		this.description = description;
 	}
@@ -99,7 +99,7 @@ public class FailureClass {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		FailureClass other = (FailureClass) obj;
+		FailureClassEntity other = (FailureClassEntity) obj;
 		if (failureClass == null) {
 			if (other.failureClass != null)
 				return false;

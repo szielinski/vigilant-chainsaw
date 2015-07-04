@@ -15,8 +15,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCauseData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
 
 @RunWith(Arquillian.class)
 @Transactional
@@ -35,20 +35,20 @@ public class EventCauseTest {
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)
 	public void basicCRUDTest() throws Exception {
-		EventCauseCK pk = new EventCauseCK();
+		EventCauseEntityCK pk = new EventCauseEntityCK();
 		pk.setCauseCode(1);
 		pk.setEventId(1);
-		EventCause createdEC = new EventCause(pk, INITIAL_DESCRIPTION);
+		EventCauseEntity createdEC = new EventCauseEntity(pk, INITIAL_DESCRIPTION);
 		eventCauseService.addEventCause(createdEC);
 
-		ArrayList <EventCause> eventCauses = new ArrayList <>();
+		ArrayList <EventCauseEntity> eventCauses = new ArrayList <>();
 		Collection <?> eventCausesCollection = eventCauseService.getCauseCode();
 
 		for (Object e : eventCausesCollection) {
-			eventCauses.add((EventCause) e);
+			eventCauses.add((EventCauseEntity) e);
 		};
-		EventCause loadedEC = null;
-		for (EventCause f : eventCauses) {
+		EventCauseEntity loadedEC = null;
+		for (EventCauseEntity f : eventCauses) {
 			if (f.getCauseCodeEventIdCK().equals(pk)) {
 				loadedEC = f;
 				break;
@@ -67,36 +67,36 @@ public class EventCauseTest {
 		int oldEventId = 45;
 		Integer newCauseCode = 5000;
 		Integer newEventId = 241;
-		EventCauseCK ck = new EventCauseCK(oldCauseCode, oldEventId);
+		EventCauseEntityCK ck = new EventCauseEntityCK(oldCauseCode, oldEventId);
 		ck.setCauseCode(newCauseCode);
 		ck.setEventId(newEventId);
 		assertEquals("failed to set cause code", newCauseCode, ck.getCauseCode());
 		assertEquals("failed to set event id", newEventId, ck.getEventId());
-		EventCauseCK ckCopy = new EventCauseCK(newCauseCode, newEventId);
+		EventCauseEntityCK ckCopy = new EventCauseEntityCK(newCauseCode, newEventId);
 		assertEquals("the two objects should be equal since they have the same state", ck, ckCopy);
 	}
 	
 	@Test
 	@Transactional(TransactionMode.ROLLBACK)
 	public void testEquality(){
-		EventCauseCK pk = new EventCauseCK(1, 1);
-		EventCauseCK other = new EventCauseCK(1, 1);
+		EventCauseEntityCK pk = new EventCauseEntityCK(1, 1);
+		EventCauseEntityCK other = new EventCauseEntityCK(1, 1);
 		
 		assertTrue(pk.equals(other));
 		assertFalse(pk.equals(null));
 		assertFalse(pk.equals(new Integer(0)));
-		assertFalse(pk.equals(new EventCauseCK(0, 1)));
-		assertFalse(pk.equals(new EventCauseCK(1, 0)));
+		assertFalse(pk.equals(new EventCauseEntityCK(0, 1)));
+		assertFalse(pk.equals(new EventCauseEntityCK(1, 0)));
 		assertTrue(pk.hashCode() == (other.hashCode()));
 		
-		EventCause eventCause = new EventCause(pk, "description");
-		EventCause otherEventCause = new EventCause(other, "description");
+		EventCauseEntity eventCause = new EventCauseEntity(pk, "description");
+		EventCauseEntity otherEventCause = new EventCauseEntity(other, "description");
 		
 		assertTrue(eventCause.equals(otherEventCause));
 		assertFalse(eventCause.equals(null));
 		assertFalse(eventCause.equals(new Integer(0)));
-		assertFalse(eventCause.equals(new EventCause(new EventCauseCK(0, 1), "description")));
-		assertFalse(eventCause.equals(new EventCause(new EventCauseCK(1, 0), "description")));
+		assertFalse(eventCause.equals(new EventCauseEntity(new EventCauseEntityCK(0, 1), "description")));
+		assertFalse(eventCause.equals(new EventCauseEntity(new EventCauseEntityCK(1, 0), "description")));
 		assertTrue(eventCause.hashCode() == (otherEventCause.hashCode()));
 	}
 }

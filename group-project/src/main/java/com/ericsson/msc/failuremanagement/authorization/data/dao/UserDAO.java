@@ -1,6 +1,6 @@
 package com.ericsson.msc.failuremanagement.authorization.data.dao;
 
-import com.ericsson.msc.failuremanagement.authorization.data.User;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 
 /**
  * A Data Access Object interface for the User entity. Defines common
@@ -11,10 +11,10 @@ public interface UserDAO {
 	/**
 	 * Add a User 
 	 */
-	public void addUser(User user);
+	public void addUser(UserEntity user);
 	
 	/**
 	 * Retrieve the User 
 	 */
-	public User getUser(String username);
+	public UserEntity getUser(String username);
 }

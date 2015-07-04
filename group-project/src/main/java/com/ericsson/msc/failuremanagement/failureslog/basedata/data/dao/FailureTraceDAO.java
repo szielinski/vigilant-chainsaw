@@ -3,9 +3,9 @@ package com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao;
 import java.util.Collection;
 import java.util.Date;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClass;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
 
 /**
  * A Data Access Object interface for the FailureTrace entity. Defines common
@@ -27,7 +27,7 @@ public interface FailureTraceDAO {
 
 	public Long getTotalNumberOfEntries();
 
-	public Collection <EventCause> getEventCauseForImsi(String imsi);
+	public Collection <EventCauseEntity> getEventCauseForImsi(String imsi);
 
 	// For a given IMSI, count the number of failures it has had during a given
 	// time period.
@@ -39,7 +39,7 @@ public interface FailureTraceDAO {
 	 * @return a Collection of FailureTrace objects; empty collection if no
 	 *         FailureTrace objects are present in the data store.
 	 */
-	public Collection <FailureTrace> getAllFailureTraces();
+	public Collection <FailureTraceEntity> getAllFailureTraces();
 
 	/**
 	 * Insert a new FailureTrace object into the data store.
@@ -47,7 +47,7 @@ public interface FailureTraceDAO {
 	 * @param failureTrace
 	 *            A new FailureTrace object.
 	 */
-	public void insertFailureTrace(FailureTrace failureTrace);
+	public void insertFailureTrace(FailureTraceEntity failureTrace);
 
 	/**
 	 * Batch insert a Collection of FailureTrace objects into the data store.
@@ -56,7 +56,7 @@ public interface FailureTraceDAO {
 	 * @param failureTraceList
 	 *            A collection of new FailureTrace objects.
 	 */
-	public void batchInsertFailureTrace(Collection <FailureTrace> failureTraceList);
+	public void batchInsertFailureTrace(Collection <FailureTraceEntity> failureTraceList);
 
 	public Collection <Integer> getCauseCodesForImsi(String imsi);
 
@@ -67,5 +67,5 @@ public interface FailureTraceDAO {
 	//Show the Top 10 IMSIs that had call failures during a time period
 	public Collection <String> topTenIMSIsWithFailures(Date startTime, Date endTime);
 
-	public Collection <FailureClass> getAllFailureClasses();
+	public Collection <FailureClassEntity> getAllFailureClasses();
 }

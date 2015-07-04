@@ -13,10 +13,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCause;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseCK;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipment;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 
 @RunWith(Arquillian.class)
@@ -44,7 +44,7 @@ public class JPAFailureTraceDAOTest {
 
 	@Test
 	public void testInsertion() {
-		FailureTrace ft = new FailureTrace();
+		FailureTraceEntity ft = new FailureTraceEntity();
 		ft.setFailureTraceId(0L);
 		failureTraceDAO.insertFailureTrace(ft);
 		assertNotNull(failureTraceDAO.getAllFailureTraces());
@@ -54,10 +54,10 @@ public class JPAFailureTraceDAOTest {
 	@Test
 	public void testGetEventCauseForIMSI() {
 		String imsi = "1234";
-		EventCause eventCause = new EventCause(new EventCauseCK(1, 1), "description");
+		EventCauseEntity eventCause = new EventCauseEntity(new EventCauseEntityCK(1, 1), "description");
 		em.persist(eventCause);
 
-		FailureTrace ft = new FailureTrace();
+		FailureTraceEntity ft = new FailureTraceEntity();
 		ft.setFailureTraceId(0L);
 		ft.setEventCause(eventCause);
 		ft.setIMSI(imsi);
@@ -75,12 +75,12 @@ public class JPAFailureTraceDAOTest {
 		long days2 = days1 + 6;
 		Date date2 = new Date(days2);
 
-		FailureTrace ft1 = new FailureTrace();
+		FailureTraceEntity ft1 = new FailureTraceEntity();
 		ft1.setFailureTraceId(0L);
 		ft1.setIMSI(imsi1);
 		ft1.setDateTime(date1);
 
-		FailureTrace ft2 = new FailureTrace();
+		FailureTraceEntity ft2 = new FailureTraceEntity();
 		ft2.setFailureTraceId(1L);
 		ft2.setIMSI(imsi2);
 		ft2.setDateTime(date2);
@@ -99,7 +99,7 @@ public class JPAFailureTraceDAOTest {
 		long days = 213412;
 		Date date = new Date(days);
 
-		FailureTrace ft = new FailureTrace();
+		FailureTraceEntity ft = new FailureTraceEntity();
 		ft.setFailureTraceId(0L);
 		ft.setIMSI(imsi);
 		ft.setDateTime(date);
@@ -115,30 +115,30 @@ public class JPAFailureTraceDAOTest {
 	@Test
 	public void testGetCountOfFailuresForModelWithinTimePeriod() {
 		String model = "model";
-		UserEquipment ue = new UserEquipment();
+		UserEquipmentEntity ue = new UserEquipmentEntity();
 		ue.setModel(model);
 		ue.setTypeAllocationCode(1);
 		em.persist(ue);
 
 		String differentModel = "different model";
-		UserEquipment ue2 = new UserEquipment();
+		UserEquipmentEntity ue2 = new UserEquipmentEntity();
 		ue2.setModel(differentModel);
 		ue2.setTypeAllocationCode(2);
 		em.persist(ue2);
 
 		long days = 213412;
 		Date date = new Date(days);
-		FailureTrace ft1 = new FailureTrace();
+		FailureTraceEntity ft1 = new FailureTraceEntity();
 		ft1.setFailureTraceId(0L);
 		ft1.setIMSI("12");
 		ft1.setUserEquipment(ue);
 		ft1.setDateTime(date);
-		FailureTrace ft2 = new FailureTrace();
+		FailureTraceEntity ft2 = new FailureTraceEntity();
 		ft2.setIMSI("12");
 		ft2.setFailureTraceId(1L);
 		ft2.setUserEquipment(ue);
 		ft2.setDateTime(date);
-		FailureTrace ft3 = new FailureTrace();
+		FailureTraceEntity ft3 = new FailureTraceEntity();
 		ft3.setIMSI("12");
 		ft3.setFailureTraceId(2L);
 		ft3.setUserEquipment(ue2);

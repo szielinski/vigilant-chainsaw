@@ -16,7 +16,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTrace;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.FailureTraceJPA;
 import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.DataImporter;
