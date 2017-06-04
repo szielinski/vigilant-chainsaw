@@ -21,3 +21,5 @@ local.properties
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+.idea/
+group-project/group-project.iml
