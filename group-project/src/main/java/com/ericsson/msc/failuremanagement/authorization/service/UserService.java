@@ -1,7 +1,7 @@
 package com.ericsson.msc.failuremanagement.authorization.service;
 
 import com.ericsson.msc.failuremanagement.authorization.business.UserDataBean;
-import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
+import com.ericsson.msc.failuremanagement.user.data.UserEntity;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;

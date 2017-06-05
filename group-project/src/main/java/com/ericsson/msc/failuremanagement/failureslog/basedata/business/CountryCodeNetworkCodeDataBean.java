@@ -1,7 +1,7 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.CountryCodeNetworkCodeEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.CountryCodeNetworkCodeJPA;
+import com.ericsson.msc.failuremanagement.network.data.CountryCodeNetworkCodeEntity;
+import com.ericsson.msc.failuremanagement.network.data.dao.CountryCodeNetworkCodeJPA;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;

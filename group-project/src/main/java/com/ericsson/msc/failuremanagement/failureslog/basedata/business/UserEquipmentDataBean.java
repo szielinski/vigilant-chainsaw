@@ -1,7 +1,7 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.UserEquipmentJPA;
+import com.ericsson.msc.failuremanagement.network.data.UserEquipmentEntity;
+import com.ericsson.msc.failuremanagement.network.data.dao.UserEquipmentJPA;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;

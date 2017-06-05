@@ -1,7 +1,7 @@
 package com.ericsson.msc.failuremanagement.authorization.business;
 
-import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
-import com.ericsson.msc.failuremanagement.authorization.data.dao.jpa.UserJPA;
+import com.ericsson.msc.failuremanagement.user.data.UserEntity;
+import com.ericsson.msc.failuremanagement.user.data.dao.UserJPA;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;

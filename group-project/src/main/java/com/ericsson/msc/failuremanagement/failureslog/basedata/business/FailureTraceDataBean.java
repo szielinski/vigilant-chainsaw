@@ -1,11 +1,11 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.FailureTraceJPA;
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.jpa.ErrorLogJPA;
+import com.ericsson.msc.failuremanagement.network.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.network.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.network.data.FailureTraceEntity;
+import com.ericsson.msc.failuremanagement.network.data.dao.FailureTraceJPA;
+import com.ericsson.msc.failuremanagement.network.error.ErrorLog;
+import com.ericsson.msc.failuremanagement.network.error.dao.ErrorLogJPA;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;

@@ -1,7 +1,7 @@
 package com.ericsson.msc.failuremanagement.failureslog.validation.business;
 
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.jpa.ErrorLogJPA;
+import com.ericsson.msc.failuremanagement.network.error.ErrorLog;
+import com.ericsson.msc.failuremanagement.network.error.dao.ErrorLogJPA;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 
