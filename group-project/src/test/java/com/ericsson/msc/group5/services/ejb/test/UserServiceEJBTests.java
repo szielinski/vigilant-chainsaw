@@ -1,31 +1,32 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import static org.junit.Assert.assertEquals;
-import javax.ejb.EJB;
+import com.ericsson.msc.failuremanagement.authorization.business.UserDataBean;
+import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.authorization.business.UserData;
-import com.ericsson.msc.failuremanagement.authorization.data.UserEntity;
+import javax.ejb.EJB;
+
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Arquillian.class)
 public class UserServiceEJBTests {
 
-	@EJB
-	private UserData service;
+    @EJB
+    private UserDataBean service;
 
-	@Test
-	public void testUserIsAdded() {
-		service.addUser("SAM", "password", "administrator");
-		UserEntity newUser = service.getUser("SAM");
-		assertEquals(newUser.getUsername(), "SAM");
-	}
+    @Test
+    public void testUserIsAdded() {
+        service.addUser("SAM", "password", "administrator");
+        UserEntity newUser = service.getUser("SAM");
+        assertEquals(newUser.getUsername(), "SAM");
+    }
 
-	@Test
-	public void testExistingUser() {
-		service.addUser("test", "pass", "administrator");
-		assertEquals(service.addUser("test", "pass", "administrator"), false);
-	}
+    @Test
+    public void testExistingUser() {
+        service.addUser("test", "pass", "administrator");
+        assertEquals(service.addUser("test", "pass", "administrator"), false);
+    }
 
 }

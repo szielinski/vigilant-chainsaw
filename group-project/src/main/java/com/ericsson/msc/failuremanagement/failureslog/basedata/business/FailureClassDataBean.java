@@ -1,37 +1,34 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 
-import java.util.Collection;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.FailureClassJPA;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureClassDAO;
+import java.util.Collection;
 
 @Stateless
 @Local
-public class FailureClassDataBean implements FailureClassData {
+public class FailureClassDataBean {
 
-	@PersistenceContext
-	private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-	@Inject
-	private FailureClassDAO dao;
+    @Inject
+    private FailureClassJPA dao;
 
-	@Override
-	public Collection <FailureClassEntity> getFailureClasses() {
-		return dao.getAllFailureClasses();
-	}
+    public Collection<FailureClassEntity> getFailureClasses() {
+        return dao.getAllFailureClasses();
+    }
 
-	@Override
-	public void addFailureClasses(Collection <FailureClassEntity> failureClasses) {
-		dao.batchInsertFailureClasses(failureClasses);
-	}
+    public void addFailureClasses(Collection<FailureClassEntity> failureClasses) {
+        dao.batchInsertFailureClasses(failureClasses);
+    }
 
-	@Override
-	public void addFailureClass(FailureClassEntity failureClass) {
-		dao.insertFailureClass(failureClass);
-	}
+    public void addFailureClass(FailureClassEntity failureClass) {
+        dao.insertFailureClass(failureClass);
+    }
 }

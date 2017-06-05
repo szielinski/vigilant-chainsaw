@@ -1,124 +1,103 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 
-import java.util.Collection;
-import java.util.Date;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.FailureTraceJPA;
+import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
+import com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.jpa.ErrorLogJPA;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureClassEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.FailureTraceEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.ErrorLogDAO;
+import java.util.Collection;
+import java.util.Date;
 
 @Stateless
 @Local
-public class FailureTraceDataBean implements FailureTraceData {
+public class FailureTraceDataBean {
+    @PersistenceContext
+    private EntityManager em;
+    @Inject
+    private FailureTraceJPA dao;
+    @Inject
+    private ErrorLogJPA errorLogDAO;
 
-	@PersistenceContext
-	private EntityManager em;
+    public Collection<EventCauseEntity> getEventCauseCombinations(String imsi) {
+        return dao.getEventCauseForImsi(imsi);
+    }
 
-	@Inject
-	private FailureTraceDAO dao;
+    public Collection<String> getImsiOfFailureTraceByFailureClass(Integer failureClass) {
+        return dao.getImsiOfFailureTraceByFailureClass(failureClass);
+    }
 
-	@Inject
-	private ErrorLogDAO errorLogDAO;
+    public Collection<String> getImsiOfFailureByTimePeriod(Date startTime, Date endTime) {
+        return dao.getImsiOfFailureWithinTimePeriod(startTime, endTime);
+    }
 
-	@Override
-	public Collection <EventCauseEntity> getEventCauseCombinations(String imsi) {
-		return dao.getEventCauseForImsi(imsi);
-	}
+    public Collection<String> getGivenImsiOfFailureWithinTimePeriod(Date startTime, Date endTime, String Imsi) {
+        return dao.getCountAndTotalDurationForGivenImsiWithinTimePeriod(startTime, endTime, Imsi);
+    }
 
-	@Override
-	public Collection <String> getImsiOfFailureTraceByFailureClass(Integer failureClass) {
-		return dao.getImsiOfFailureTraceByFailureClass(failureClass);
-	}
+    public Collection<String> getCountFailsForModelWithinTimePeriod(String model, Date startTime, Date endTime) {
+        return dao.getCountOfFailuresForModelWithinTimePeriod(model, startTime, endTime);
+    }
 
-	@Override
-	public Collection <String> getImsiOfFailureByTimePeriod(Date startTime, Date endTime) {
-		return dao.getImsiOfFailureWithinTimePeriod(startTime, endTime);
-	}
+    public Collection<String> getEventCauseCombinationsForModel(String model) {
+        return dao.getEventCauseCombinationsForModel(model);
+    }
 
-	@Override
-	public Collection <String> getGivenImsiOfFailureWithinTimePeriod(Date startTime, Date endTime, String Imsi) {
-		return dao.getCountAndTotalDurationForGivenImsiWithinTimePeriod(startTime, endTime, Imsi);
-	}
+    public Collection<String> getTop10MarketOperatorCellIdCombinations(Date startTime, Date endTime) {
+        return dao.getTop10MarketOperatorCellIdCombinations(startTime, endTime);
+    }
 
-	@Override
-	public Collection <String> getCountFailsForModelWithinTimePeriod(String model, Date startTime, Date endTime) {
-		return dao.getCountOfFailuresForModelWithinTimePeriod(model, startTime, endTime);
-	}
+    public Collection<FailureTraceEntity> getAllFailureTraces() {
+        return dao.getAllFailureTraces();
+    }
 
-	@Override
-	public Collection <String> getEventCauseCombinationsForModel(String model) {
-		return dao.getEventCauseCombinationsForModel(model);
-	}
+    public Long getTotalNumberOfEntries() {
+        return dao.getTotalNumberOfEntries();
+    }
 
-	public Collection <String> getTop10MarketOperatorCellIdCombinations(Date startTime, Date endTime) {
-		return dao.getTop10MarketOperatorCellIdCombinations(startTime, endTime);
-	}
+    public void addFailureTraces(Collection<FailureTraceEntity> failureTraces) {
+        dao.batchInsertFailureTrace(failureTraces);
+    }
 
-	@Override
-	public Collection <FailureTraceEntity> getAllFailureTraces() {
-		return dao.getAllFailureTraces();
-	}
+    // For a given IMSI, count the number of failures it has had during a given
+    // time period.
+    public Collection<String> givenImsiAndTimePeriodReturnNumberOfFailures(String Imsi, Date startTime, Date endTime) {
+        return dao.getCountOfFailuresForGivenImsiWithinTimePeriod(Imsi, startTime, endTime);
+    }
 
-	@Override
-	public Long getTotalNumberOfEntries() {
-		return dao.getTotalNumberOfEntries();
-	}
+    public Collection<String> getAllIMSIs() {
+        return dao.getAllIMSIs();
+    }
 
-	@Override
-	public void addFailureTraces(Collection <FailureTraceEntity> failureTraces) {
-		dao.batchInsertFailureTrace(failureTraces);
-	}
+    public Collection<String> getAllModels() {
+        return dao.getAllModels();
+    }
 
-	// For a given IMSI, count the number of failures it has had during a given
-	// time period.
-	@Override
-	public Collection <String> givenImsiAndTimePeriodReturnNumberOfFailures(String Imsi, Date startTime, Date endTime) {
-		return dao.getCountOfFailuresForGivenImsiWithinTimePeriod(Imsi, startTime, endTime);
-	}
+    public Collection<Integer> getCauseCodesForImsi(String imsi) {
+        return dao.getCauseCodesForImsi(imsi);
+    }
 
-	@Override
-	public Collection <String> getAllIMSIs() {
-		return dao.getAllIMSIs();
-	}
+    // Show the Top 10 IMSIs that had call failures during a time period
+    public Collection<String> topTenIMSIsWithFailures(Date startTime,
+                                                      Date endTime) {
+        return dao.topTenIMSIsWithFailures(startTime, endTime);
+    }
 
-	@Override
-	public Collection <String> getAllModels() {
-		return dao.getAllModels();
-	}
+    public Collection<FailureClassEntity> getAllFailureClasses() {
+        return dao.getAllFailureClasses();
+    }
 
-	@Override
-	public Collection <Integer> getCauseCodesForImsi(String imsi) {
-		return dao.getCauseCodesForImsi(imsi);
-	}
+    public Collection<ErrorLog> getErrorLogByImportDate(String importDate) {
+        return errorLogDAO.getErrorLogByImportDate(importDate);
+    }
 
-	// Show the Top 10 IMSIs that had call failures during a time period
-	@Override
-	public Collection <String> topTenIMSIsWithFailures(Date startTime,
-			Date endTime) {
-		return dao.topTenIMSIsWithFailures(startTime, endTime);
-	}
-
-	@Override
-	public Collection <FailureClassEntity> getAllFailureClasses() {
-		return dao.getAllFailureClasses();
-	}
-
-	@Override
-	public Collection <ErrorLog> getErrorLogByImportDate(String importDate) {
-		return errorLogDAO.getErrorLogByImportDate(importDate);
-	}
-
-	@Override
-	public void addFailureTrace(FailureTraceEntity failureTrace) {
-		dao.insertFailureTrace(failureTrace);
-
-	}
+    public void addFailureTrace(FailureTraceEntity failureTrace) {
+        dao.insertFailureTrace(failureTrace);
+    }
 }

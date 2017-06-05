@@ -1,45 +1,46 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import static org.junit.Assert.assertTrue;
-import java.util.ArrayList;
-import java.util.Collection;
-import javax.ejb.EJB;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCauseDataBean;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.EventCauseData;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
+import javax.ejb.EJB;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import static org.junit.Assert.assertTrue;
 
 @RunWith(Arquillian.class)
 public class EventCauseServiceEJBTest {
 
-	@EJB
-	private EventCauseData service;
+    @EJB
+    private EventCauseDataBean service;
 
-	@Test
-	public void addEventCause() {
-		EventCauseEntityCK ckOne = new EventCauseEntityCK(1, 1);
-		EventCauseEntityCK ckTwo = new EventCauseEntityCK(2, 2);
-		EventCauseEntityCK ckThree = new EventCauseEntityCK(3, 3);
-		EventCauseEntity [] eventCauseArray = {new EventCauseEntity(ckOne, "first"), new EventCauseEntity(ckTwo, "second"), new EventCauseEntity(ckThree, "third")};
+    @Test
+    public void addEventCause() {
+        EventCauseEntityCK ckOne = new EventCauseEntityCK(1, 1);
+        EventCauseEntityCK ckTwo = new EventCauseEntityCK(2, 2);
+        EventCauseEntityCK ckThree = new EventCauseEntityCK(3, 3);
+        EventCauseEntity[] eventCauseArray = {new EventCauseEntity(ckOne, "first"), new EventCauseEntity(ckTwo, "second"), new EventCauseEntity(ckThree, "third")};
 
-		Collection <EventCauseEntity> eventCauses = new ArrayList <>();
-		for (EventCauseEntity e : eventCauseArray) {
-			eventCauses.add(e);
-		}
+        Collection<EventCauseEntity> eventCauses = new ArrayList<>();
+        for (EventCauseEntity e : eventCauseArray) {
+            eventCauses.add(e);
+        }
 
-		service.addEventCauses(eventCauses);
+        service.addEventCauses(eventCauses);
 
-		Collection <EventCauseEntity> retrievedEventCauses = service.getCauseCode();
+        Collection<EventCauseEntity> retrievedEventCauses = service.getCauseCode();
 
-		for (EventCauseEntity e : retrievedEventCauses) {
-			assertTrue("An object failed to be retrieved", eventCauses.contains(e));
-			assertTrue(e.equals(e));
-			assertTrue(e.hashCode() == e.hashCode());
-		}
+        for (EventCauseEntity e : retrievedEventCauses) {
+            assertTrue("An object failed to be retrieved", eventCauses.contains(e));
+            assertTrue(e.equals(e));
+            assertTrue(e.hashCode() == e.hashCode());
+        }
 
-	}
+    }
 
 }

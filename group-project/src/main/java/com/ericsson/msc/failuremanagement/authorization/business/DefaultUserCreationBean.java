@@ -8,12 +8,11 @@ import javax.ejb.Startup;
 @Startup
 @Singleton
 public class DefaultUserCreationBean {
+    @EJB
+    UserDataBean userService;
 
-	@EJB
-	UserData userService;
-
-	@PostConstruct
-	public void init() {
-		userService.addUser("administrator", "admin", "administrator");
-	}
+    @PostConstruct
+    public void init() {
+        userService.addUser("administrator", "admin", "administrator");
+    }
 }

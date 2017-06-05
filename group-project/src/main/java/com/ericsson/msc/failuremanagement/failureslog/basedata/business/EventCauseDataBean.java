@@ -1,38 +1,32 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 
-import java.util.Collection;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.EventCauseJPA;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.EventCauseDAO;
+import java.util.Collection;
 
 @Stateless
 @Local
-public class EventCauseDataBean implements EventCauseData {
+public class EventCauseDataBean {
+    @PersistenceContext
+    private EntityManager em;
+    @Inject
+    private EventCauseJPA dao;
 
-	@PersistenceContext
-	private EntityManager em;
+    public Collection<EventCauseEntity> getCauseCode() {
+        return dao.getAllEventCauses();
+    }
 
-	@Inject
-	private EventCauseDAO dao;
+    public void addEventCauses(Collection<EventCauseEntity> eventCauses) {
+        dao.batchInsertEventCause(eventCauses);
+    }
 
-	@Override
-	public Collection <EventCauseEntity> getCauseCode() {
-		return dao.getAllEventCauses();
-	}
-
-	@Override
-	public void addEventCauses(Collection <EventCauseEntity> eventCauses) {
-		dao.batchInsertEventCause(eventCauses);
-	}
-
-	@Override
-	public void addEventCause(EventCauseEntity eventCause) {
-		dao.insertEventCause(eventCause);
-	}
-
+    public void addEventCause(EventCauseEntity eventCause) {
+        dao.insertEventCause(eventCause);
+    }
 }

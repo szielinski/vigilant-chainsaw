@@ -11,6 +11,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.EventCauseJPA;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.FailureTraceJPA;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.After;
 import org.junit.Before;
@@ -19,8 +21,6 @@ import org.junit.runner.RunWith;
 
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntity;
 import com.ericsson.msc.failuremanagement.failureslog.basedata.data.EventCauseEntityCK;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.EventCauseDAO;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.FailureTraceDAO;
 
 @RunWith(Arquillian.class)
 public class JPAEventCauseDAOTest {
@@ -29,13 +29,13 @@ public class JPAEventCauseDAOTest {
 	private EntityManager em;
 
 	@Inject
-	private FailureTraceDAO failureTraceDAO;
+	private FailureTraceJPA failureTraceDAO;
 
 	@Inject
 	private UserTransaction utx;
 	
 	@Inject
-	private EventCauseDAO eventCauseDAO;
+	private EventCauseJPA eventCauseDAO;
 	
 	@Before
 	public void preparePersistenceTest() throws Exception {

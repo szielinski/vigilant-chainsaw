@@ -1,40 +1,37 @@
 package com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.jpa;
 
-import java.util.Collection;
+import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
+
+import javax.ejb.Local;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.Collection;
 
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.ErrorLog;
-import com.ericsson.msc.failuremanagement.failureslog.validation.data.dao.ErrorLogDAO;
+@Local
+@Stateless
+public class ErrorLogJPA {
+    @PersistenceContext
+    private EntityManager em;
 
-public class ErrorLogJPA implements ErrorLogDAO {
+    public Collection<ErrorLog> getAllErrorLogs() {
+        return em.createNamedQuery("findAllErrorLogs").getResultList();
+    }
 
-	@PersistenceContext
-	private EntityManager em;
+    public void insertErrorLog(ErrorLog errorLog) {
+        em.persist(errorLog);
+    }
 
-	@Override
-	public Collection <ErrorLog> getAllErrorLogs() {
-		return em.createNamedQuery("findAllErrorLogs").getResultList();
-	}
+    public void batchInsertErrorLog(Collection<ErrorLog> errorLogList) {
+        for (ErrorLog errorLog : errorLogList)
+            em.persist(errorLog);
+    }
 
-	@Override
-	public void insertErrorLog(ErrorLog errorLog) {
-		em.persist(errorLog);
-	}
+    public void deleteErrorLogs() {
+        em.createNamedQuery("deleteAllErrorLogs").getResultList();
+    }
 
-	@Override
-	public void batchInsertErrorLog(Collection <ErrorLog> errorLogList) {
-		for(ErrorLog errorLog : errorLogList)
-			em.persist(errorLog);
-	}
-
-	@Override
-	public void deleteErrorLogs() {
-		em.createNamedQuery("deleteAllErrorLogs").getResultList();
-	}
-
-	@Override
-	public Collection <ErrorLog> getErrorLogByImportDate(String importDate) {
-		return em.createNamedQuery("getErrorsLogsByGenerationDate").setParameter("generationDate", importDate).getResultList();
-	}
+    public Collection<ErrorLog> getErrorLogByImportDate(String importDate) {
+        return em.createNamedQuery("getErrorsLogsByGenerationDate").setParameter("generationDate", importDate).getResultList();
+    }
 }

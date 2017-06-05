@@ -1,38 +1,35 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
 
-import java.util.Collection;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
+import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.jpa.UserEquipmentJPA;
+
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.UserEquipmentEntity;
-import com.ericsson.msc.failuremanagement.failureslog.basedata.data.dao.UserEquipmentDAO;
+import java.util.Collection;
 
 @Stateless
 @Local
-public class UserEquipmentDataBean implements UserEquipmentData {
+public class UserEquipmentDataBean {
 
-	@PersistenceContext
-	private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-	@Inject
-	private UserEquipmentDAO dao;
+    @Inject
+    private UserEquipmentJPA dao;
 
-	@Override
-	public Collection <UserEquipmentEntity> getAllUserEquipments() {
-		return dao.getAllUserEquipment();
-	}
+    public Collection<UserEquipmentEntity> getAllUserEquipments() {
+        return dao.getAllUserEquipment();
+    }
 
-	@Override
-	public void addUserEquipments(Collection <UserEquipmentEntity> userEquipments) {
-		dao.batchInsertUserEquipment(userEquipments);
-	}
+    public void addUserEquipments(Collection<UserEquipmentEntity> userEquipments) {
+        dao.batchInsertUserEquipment(userEquipments);
+    }
 
-	@Override
-	public void addUserEquipment(UserEquipmentEntity userEquipment) {
-		dao.insertUserEquipment(userEquipment);
-	}
+    public void addUserEquipment(UserEquipmentEntity userEquipment) {
+        dao.insertUserEquipment(userEquipment);
+    }
 
 }
