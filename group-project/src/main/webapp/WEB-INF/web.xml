@@ -20,11 +20,11 @@
 	<servlet>
 		<description></description>
 		<display-name>LogoutServlet</display-name>
-		<servlet-name>com.ericsson.msc.failuremanagement.authorization.service</servlet-name>
-		<servlet-class>com.ericsson.msc.failuremanagement.authorization.service.LogoutServlet</servlet-class>
+		<servlet-name>authorization.service</servlet-name>
+		<servlet-class>LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>com.ericsson.msc.failuremanagement.authorization.service</servlet-name>
+		<servlet-name>authorization.service</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
 	</servlet-mapping>
 

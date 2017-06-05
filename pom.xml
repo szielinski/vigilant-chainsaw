@@ -63,5 +63,6 @@
         <module>group-project</module>
         <!--<module>javaee-IT</module> TODO IT tests disabled until they are reviewed & refactored-->
         <module>database-access</module>
+        <module>authentication</module>
     </modules>
 </project>

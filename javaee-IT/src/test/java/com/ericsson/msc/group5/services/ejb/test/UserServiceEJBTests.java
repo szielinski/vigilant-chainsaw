@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import com.ericsson.msc.failuremanagement.authorization.business.UserDataBean;
+import authorization.business.UserDataBean;
 import com.ericsson.msc.failuremanagement.user.data.data.UserEntity;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
