@@ -1,4 +1,4 @@
-package com.ericsson.msc.failuremanagement.failureslog.dataimport.manual.service;
+package com.ericsson.msc.failuremanagement.failureslog.basedata.service;
 
 import javax.ws.rs.FormParam;
 import org.jboss.resteasy.annotations.providers.multipart.PartType;

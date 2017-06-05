@@ -1,4 +1,4 @@
-package com.ericsson.msc.failuremanagement.data.util;
+package com.ericsson.msc.failuremanagement.common.utils.util;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;

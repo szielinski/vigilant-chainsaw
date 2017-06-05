@@ -1,4 +1,4 @@
-package com.ericsson.msc.failuremanagement.failureslog.dataimport.business;
+package com.ericsson.msc.failuremanagement.failureslog.basedata.service;
 
 import org.json.simple.JSONObject;
 

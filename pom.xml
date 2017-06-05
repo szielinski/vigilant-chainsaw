@@ -65,5 +65,7 @@
         <module>database-access</module>
         <module>authentication</module>
         <module>data-validation</module>
+        <module>data-import</module>
+        <module>common-tools</module>
     </modules>
 </project>

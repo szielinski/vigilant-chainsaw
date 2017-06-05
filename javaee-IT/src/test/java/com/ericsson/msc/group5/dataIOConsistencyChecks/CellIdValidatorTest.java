@@ -6,7 +6,7 @@ import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.validation.business.ValidatorBean;
+import com.ericsson.msc.failuremanagement.data.importer.business.ValidatorBean;
 
 @RunWith(Arquillian.class)
 public class CellIdValidatorTest {

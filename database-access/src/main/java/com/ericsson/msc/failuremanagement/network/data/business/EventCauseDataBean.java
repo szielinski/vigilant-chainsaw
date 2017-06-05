@@ -1,4 +1,4 @@
-package com.ericsson.msc.failuremanagement.failureslog.basedata.business;
+package com.ericsson.msc.failuremanagement.network.data.business;
 
 import com.ericsson.msc.failuremanagement.network.data.EventCauseEntity;
 import com.ericsson.msc.failuremanagement.network.data.dao.EventCauseJPA;

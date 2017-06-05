@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.CountryCodeNetworkCodeDataBean;
+import com.ericsson.msc.failuremanagement.network.data.business.CountryCodeNetworkCodeDataBean;
 import data.CountryCodeNetworkCodeEntittyCK;
 import data.CountryCodeNetworkCodeEntity;
 import data.CountryEntity;

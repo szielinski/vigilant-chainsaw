@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import com.ericsson.msc.failuremanagement.failureslog.validation.business.DateUtilityBean;
+import com.ericsson.msc.failuremanagement.data.importer.business.DateUtilityBean;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;
 import org.junit.runner.RunWith;

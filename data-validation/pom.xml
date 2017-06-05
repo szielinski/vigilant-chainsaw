@@ -13,6 +13,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.ericsson.msc.group5</groupId>
+            <artifactId>common-tools</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.11</version>

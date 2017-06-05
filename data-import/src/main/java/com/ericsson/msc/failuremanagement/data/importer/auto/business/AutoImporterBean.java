@@ -1,6 +1,6 @@
-package com.ericsson.msc.failuremanagement.failureslog.dataimport.auto.business;
+package com.ericsson.msc.failuremanagement.data.importer.auto.business;
 
-import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.DataImporterBean;
+import com.ericsson.msc.failuremanagement.data.importer.business.DataImporterBean;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 

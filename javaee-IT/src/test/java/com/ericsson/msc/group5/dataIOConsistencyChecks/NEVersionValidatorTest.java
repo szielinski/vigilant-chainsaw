@@ -16,7 +16,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.PomEquippedResolveStage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.ericsson.msc.failuremanagement.failureslog.validation.business.ValidatorBean;
+import com.ericsson.msc.failuremanagement.data.importer.business.ValidatorBean;
 
 @RunWith(Arquillian.class)
 public class NEVersionValidatorTest {

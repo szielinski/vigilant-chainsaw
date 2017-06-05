@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import com.ericsson.msc.failuremanagement.failureslog.validation.business.ErrorLogWriterBean;
+import com.ericsson.msc.failuremanagement.data.importer.business.ErrorLogWriterBean;
 import com.ericsson.msc.failuremanagement.network.error.data.ErrorLog;
 import com.ericsson.msc.failuremanagement.network.error.data.dao.jpa.ErrorLogJPA;
 import org.apache.poi.hssf.usermodel.HSSFRow;

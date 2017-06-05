@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.UserEquipmentDataBean;
+import com.ericsson.msc.failuremanagement.network.data.business.UserEquipmentDataBean;
 import data.UserEquipmentEntity;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;

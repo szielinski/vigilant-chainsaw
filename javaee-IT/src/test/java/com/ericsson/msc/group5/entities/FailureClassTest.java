@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.entities;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureClassDataBean;
+import com.ericsson.msc.failuremanagement.network.data.business.FailureClassDataBean;
 import data.EventCauseEntityCK;
 import data.FailureClassEntity;
 import org.jboss.arquillian.junit.Arquillian;

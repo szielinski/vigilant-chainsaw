@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.entities;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.*;
+import com.ericsson.msc.failuremanagement.network.data.business.*;
 import data.*;
 import data.dao.jpa.FailureTraceJPA;
 import org.jboss.arquillian.junit.Arquillian;

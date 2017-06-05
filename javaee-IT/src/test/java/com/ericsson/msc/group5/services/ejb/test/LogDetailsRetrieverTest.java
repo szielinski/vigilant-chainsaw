@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.LogDetailsRetriever;
+import dataimport.business.LogDetailsRetriever;
 import org.jboss.arquillian.junit.Arquillian;
 import org.json.simple.JSONObject;
 import org.junit.Test;

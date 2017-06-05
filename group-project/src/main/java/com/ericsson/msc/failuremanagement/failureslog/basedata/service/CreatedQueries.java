@@ -1,6 +1,6 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.service;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceDataBean;
+import com.ericsson.msc.failuremanagement.network.data.business.FailureTraceDataBean;
 import com.ericsson.msc.failuremanagement.network.data.FailureClassEntity;
 import com.ericsson.msc.failuremanagement.network.data.FailureTraceEntity;
 import com.ericsson.msc.failuremanagement.network.error.ErrorLog;

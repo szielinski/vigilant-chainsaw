@@ -1,9 +1,9 @@
-package com.ericsson.msc.failuremanagement.failureslog.dataimport.business;
+package com.ericsson.msc.failuremanagement.data.importer.business;
 
 import com.ericsson.msc.failuremanagement.data.validation.ValidatorBean;
-import com.ericsson.msc.failuremanagement.failureslog.validation.business.ErrorLogWriterBean;
 import com.ericsson.msc.failuremanagement.network.data.*;
 import com.ericsson.msc.failuremanagement.network.data.dao.*;
+import com.ericsson.msc.failuremanagement.network.error.business.ErrorLogWriterBean;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -29,7 +29,7 @@ import java.util.HashMap;
 
 @Stateless
 @Local
-@Path("/import")  //TODO: WTF!
+@Path("/importer")  //TODO: WTF!
 public class DataImporterBean {
     @Inject
     private CountryCodeNetworkCodeJPA countryCodeNetworkCodeJPA;
@@ -105,7 +105,7 @@ public class DataImporterBean {
 
         duration = System.currentTimeMillis() - start;
         writeToLogFile();
-        System.out.printf("The import took %d milliseconds.\n", duration);
+        System.out.printf("The importer took %d milliseconds.\n", duration);
     }
 
     private void readExcelDocument(Workbook excelWorkbook) {

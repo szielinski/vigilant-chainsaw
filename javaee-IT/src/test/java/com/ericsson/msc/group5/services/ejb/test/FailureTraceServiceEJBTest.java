@@ -1,6 +1,6 @@
 package com.ericsson.msc.group5.services.ejb.test;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceDataBean;
+import com.ericsson.msc.failuremanagement.network.data.business.FailureTraceDataBean;
 import data.FailureTraceEntity;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Test;

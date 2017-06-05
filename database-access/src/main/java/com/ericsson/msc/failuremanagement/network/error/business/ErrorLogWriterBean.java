@@ -1,6 +1,6 @@
-package com.ericsson.msc.failuremanagement.failureslog.validation.business;
+package com.ericsson.msc.failuremanagement.network.error.business;
 
-import com.ericsson.msc.failuremanagement.data.util.DateUtilityBean;
+import com.ericsson.msc.failuremanagement.common.utils.util.DateUtilityBean;
 import com.ericsson.msc.failuremanagement.network.error.ErrorLog;
 import com.ericsson.msc.failuremanagement.network.error.dao.ErrorLogJPA;
 import org.apache.poi.hssf.usermodel.HSSFCell;

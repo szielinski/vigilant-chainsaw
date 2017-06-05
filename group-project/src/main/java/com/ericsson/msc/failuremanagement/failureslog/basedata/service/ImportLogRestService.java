@@ -1,7 +1,5 @@
 package com.ericsson.msc.failuremanagement.failureslog.basedata.service;
 
-import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.LogDetailsRetriever;
-
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

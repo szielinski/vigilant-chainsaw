@@ -12,6 +12,12 @@
     <artifactId>database-access</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.ericsson.msc.group5</groupId>
+            <artifactId>common-tools</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/javax.persistence/persistence-api -->
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -33,6 +39,12 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
             <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.11</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

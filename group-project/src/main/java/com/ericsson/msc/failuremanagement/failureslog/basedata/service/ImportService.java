@@ -1,7 +1,7 @@
-package com.ericsson.msc.failuremanagement.failureslog.dataimport.manual.service;
+package com.ericsson.msc.failuremanagement.failureslog.basedata.service;
 
-import com.ericsson.msc.failuremanagement.failureslog.basedata.business.FailureTraceDataBean;
-import com.ericsson.msc.failuremanagement.failureslog.dataimport.business.DataImporterBean;
+import com.ericsson.msc.failuremanagement.network.data.business.FailureTraceDataBean;
+import com.ericsson.msc.failuremanagement.data.importer.business.DataImporterBean;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
@@ -27,7 +27,7 @@ public class ImportService {
     private DataImporterBean dataImport;
 
     @POST
-    @Path("/import")
+    @Path("/importer")
     @Consumes("multipart/form-data")
     public Response importUploadedFile(@MultipartForm FileUploadForm form) {
         String resultString = "";
