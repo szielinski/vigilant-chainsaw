@@ -13,8 +13,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>group5</groupId>
+            <groupId>com.ericsson.msc.group5</groupId>
             <artifactId>database-access</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ericsson.msc.group5</groupId>
+            <artifactId>data-validation</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 

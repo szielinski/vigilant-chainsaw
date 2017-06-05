@@ -1,5 +1,6 @@
-package com.ericsson.msc.failuremanagement.failureslog.validation.business;
+package com.ericsson.msc.failuremanagement.data.validation;
 
+import com.ericsson.msc.failuremanagement.data.util.DateUtilityBean;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.ss.usermodel.Cell;
 

@@ -1,4 +1,4 @@
-package com.ericsson.msc.failuremanagement.failureslog.validation.business;
+package com.ericsson.msc.failuremanagement.data.util;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
